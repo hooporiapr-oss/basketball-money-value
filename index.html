@@ -3,580 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Basketball Money — Cognitive Proof System</title>
-  <meta name="description" content="Basketball Money turns cognitive skill into player value. Free COG coaches explain it. Paid COG drills prove it." />
-  <style>
-    :root{
-      --bg:#050507;
-      --panel:#0d0d12;
-      --panel2:#15151d;
-      --text:#f7f2e8;
-      --muted:#bcb5a8;
-      --line:rgba(255,255,255,.12);
-      --gold:#f0b84a;
-      --orange:#ff7a1a;
-      --green:#66ff99;
-      --red:#ff5b45;
-      --blue:#76a9ff;
-      --shadow:0 20px 70px rgba(0,0,0,.45);
-      --radius:24px;
-      --max:1120px;
-    }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-
-    body{
-      min-height:100vh;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(240,184,74,.18), transparent 31%),
-        radial-gradient(circle at 88% 6%, rgba(255,122,26,.14), transparent 26%),
-        radial-gradient(circle at 55% 52%, rgba(118,169,255,.07), transparent 34%),
-        linear-gradient(180deg, #050507 0%, #0a0a0f 47%, #050507 100%);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
-      opacity:.06;
-      background-image:
-        linear-gradient(rgba(255,255,255,.09) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.09) 1px, transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(to bottom, black, transparent 78%);
-    }
-
-    a{color:inherit;text-decoration:none}
-    button,input,select{font:inherit}
-    .wrap{width:min(var(--max), calc(100% - 24px)); margin-inline:auto}
-
-    [data-lang="es"] .en,
-    [data-lang="en"] .es{display:none!important}
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:blur(18px);
-      background:rgba(5,5,7,.86);
-      border-bottom:1px solid var(--line);
-    }
-
-    .nav-inner{
-      width:min(var(--max), calc(100% - 24px));
-      min-height:72px;
-      margin:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-    }
-
-    .brand-mark{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:max-content;
-    }
-
-    .nav-logo{
-      width:46px;
-      height:46px;
-      border-radius:14px;
-      object-fit:cover;
-      background:#111;
-      box-shadow:0 0 0 2px rgba(240,184,74,.22), 0 0 34px rgba(240,184,74,.22);
-    }
-
-    .brand-copy small{
-      display:block;
-      color:var(--gold);
-      font-size:.66rem;
-      font-weight:1000;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-
-    .brand-copy strong{
-      display:block;
-      font-size:1rem;
-      line-height:1.1;
-      letter-spacing:-.02em;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      color:var(--muted);
-      font-size:.92rem;
-      font-weight:800;
-    }
-
-    .nav-links a:hover{color:var(--text)}
-
-    .nav-actions{display:flex;align-items:center;gap:10px}
-
-    .lang-inline,.lang-menu{display:flex;align-items:center;gap:8px}
-
-    .lang-inline button,.lang-menu button{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.05);
-      color:var(--muted);
-      padding:9px 12px;
-      border-radius:999px;
-      cursor:pointer;
-      transition:.2s ease;
-      font-size:.82rem;
-      font-weight:1000;
-    }
-
-    .lang-inline button.active,.lang-inline button:hover,
-    .lang-menu button.active,.lang-menu button:hover{
-      color:#100a02;
-      background:linear-gradient(135deg, var(--gold), var(--orange));
-      border-color:transparent;
-    }
-
-    .menu-toggle{
-      display:none;
-      width:46px;
-      height:46px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.055);
-      cursor:pointer;
-      position:relative;
-      flex-shrink:0;
-    }
-
-    .menu-toggle span,.menu-toggle::before,.menu-toggle::after{
-      content:"";
-      position:absolute;
-      left:50%;
-      width:20px;
-      height:2px;
-      background:var(--text);
-      border-radius:999px;
-      transform:translateX(-50%);
-      transition:.22s ease;
-    }
-
-    .menu-toggle span{top:22px}
-    .menu-toggle::before{top:16px}
-    .menu-toggle::after{top:28px}
-    .menu-toggle.active span{opacity:0}
-    .menu-toggle.active::before{top:22px;transform:translateX(-50%) rotate(45deg)}
-    .menu-toggle.active::after{top:22px;transform:translateX(-50%) rotate(-45deg)}
-
-    .mobile-menu{
-      display:none;
-      border-top:1px solid var(--line);
-      background:rgba(9,9,13,.98);
-    }
-
-    .mobile-menu.open{display:block}
-
-    .mobile-menu-inner{
-      width:min(var(--max), calc(100% - 24px));
-      margin:auto;
-      padding:14px 0 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .mobile-menu a{
-      padding:13px 14px;
-      border:1px solid var(--line);
-      border-radius:15px;
-      background:rgba(255,255,255,.045);
-      color:var(--text);
-      font-weight:900;
-    }
-
-    .lang-menu{flex-wrap:wrap;padding-top:2px}
-
-    .hero{padding:42px 0 32px}
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.07fr) minmax(290px,.93fr);
-      gap:28px;
-      align-items:center;
-    }
-
-    .hero-logo-wrap{
-      width:min(344px, 78vw);
-      margin:0 0 22px;
-      padding:10px;
-      border-radius:30px;
-      background:linear-gradient(135deg, rgba(240,184,74,.28), rgba(255,122,26,.11), rgba(255,255,255,.04));
-      border:1px solid rgba(240,184,74,.22);
-      box-shadow:0 22px 70px rgba(0,0,0,.42), 0 0 80px rgba(240,184,74,.14);
-    }
-
-    .hero-logo{display:block;width:100%;border-radius:24px;object-fit:cover}
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      color:var(--gold);
-      background:rgba(240,184,74,.085);
-      border:1px solid rgba(240,184,74,.22);
-      border-radius:999px;
-      padding:9px 14px;
-      margin-bottom:16px;
-      font-size:.77rem;
-      font-weight:1000;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-    }
-
-    .dot{
-      width:9px;
-      height:9px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 18px rgba(102,255,153,.8);
-    }
-
-    h1{
-      max-width:800px;
-      font-size:clamp(2.55rem, 8.2vw, 7rem);
-      line-height:.88;
-      letter-spacing:-.075em;
-      text-transform:uppercase;
-    }
-
-    .grad{
-      background:linear-gradient(135deg, #fff 4%, var(--gold) 42%, var(--orange) 78%);
-      -webkit-background-clip:text;
-      color:transparent;
-    }
-
-    .hero p{
-      max-width:720px;
-      margin-top:18px;
-      color:var(--muted);
-      font-size:clamp(1rem, 1.65vw, 1.18rem);
-      line-height:1.6;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:24px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:47px;
-      padding:0 18px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      cursor:pointer;
-      transition:.2s ease;
-      font-weight:1000;
-      font-size:.92rem;
-      text-align:center;
-    }
-
-    .btn-primary{
-      background:linear-gradient(135deg, var(--gold), var(--orange));
-      color:#100a02;
-      border-color:transparent;
-      box-shadow:0 12px 36px rgba(255,122,26,.22);
-    }
-
-    .btn-secondary{background:rgba(255,255,255,.06);color:var(--text)}
-    .btn:hover{transform:translateY(-2px)}
-
-    .proof-panel{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.032)), rgba(13,13,18,.9);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:20px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .proof-panel::before{
-      content:"";
-      position:absolute;
-      top:-90px;
-      right:-90px;
-      width:250px;
-      height:250px;
-      border-radius:50%;
-      background:rgba(240,184,74,.13);
-      filter:blur(30px);
-    }
-
-    .panel-head{
-      position:relative;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      padding-bottom:16px;
-      margin-bottom:18px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .panel-head h2{font-size:1rem;text-transform:uppercase;letter-spacing:.08em}
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(102,255,153,.22);
-      background:rgba(102,255,153,.1);
-      color:var(--green);
-      border-radius:999px;
-      padding:7px 10px;
-      font-size:.74rem;
-      font-weight:1000;
-      white-space:nowrap;
-    }
-
-    .value-stack{position:relative;display:flex;flex-direction:column;gap:10px}
-
-    .value-row{
-      display:grid;
-      grid-template-columns:44px minmax(0,1fr);
-      gap:12px;
-      align-items:center;
-      padding:13px;
-      border:1px solid var(--line);
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-    }
-
-    .value-num{
-      width:44px;
-      height:44px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:14px;
-      background:rgba(240,184,74,.1);
-      border:1px solid rgba(240,184,74,.22);
-      color:var(--gold);
-      font-weight:1000;
-      letter-spacing:.08em;
-    }
-
-    .value-row strong{display:block;font-size:.98rem;letter-spacing:-.02em;margin-bottom:3px}
-    .value-row span{display:block;color:var(--muted);font-size:.84rem;line-height:1.35}
-
-    .section{padding:34px 0}
-
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:18px;
-      margin-bottom:18px;
-    }
-
-    .section-head h2{
-      font-size:clamp(1.9rem,4vw,3.65rem);
-      line-height:1;
-      letter-spacing:-.06em;
-      text-transform:uppercase;
-    }
-
-    .section-head p{max-width:590px;color:var(--muted);line-height:1.6}
-
-    .thesis{
-      border:1px solid rgba(240,184,74,.23);
-      background:radial-gradient(circle at 20% 10%, rgba(240,184,74,.16), transparent 32%), rgba(255,255,255,.045);
-      border-radius:28px;
-      padding:24px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      align-items:stretch;
-    }
-
-    .thesis-card{
-      border:1px solid var(--line);
-      background:rgba(5,5,7,.42);
-      border-radius:22px;
-      padding:18px;
-    }
-
-    .thesis-card strong{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;margin-bottom:8px}
-    .thesis-card h3{font-size:1.45rem;letter-spacing:-.04em;line-height:1.1;margin-bottom:8px}
-    .thesis-card p{color:var(--muted);line-height:1.55;font-size:.96rem}
-
-    .coach-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:14px;
-    }
-
-    .coach-card{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.032)), rgba(13,13,18,.9);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:0 14px 44px rgba(0,0,0,.24);
-      display:flex;
-      flex-direction:column;
-      min-height:100%;
-    }
-
-    .coach-top{
-      padding:16px;
-      border-bottom:1px solid var(--line);
-      background:radial-gradient(circle at top right, rgba(240,184,74,.14), transparent 46%), rgba(255,255,255,.035);
-    }
-
-    .coach-number{
-      display:inline-flex;
-      color:var(--gold);
-      background:rgba(240,184,74,.08);
-      border:1px solid rgba(240,184,74,.22);
-      border-radius:999px;
-      padding:6px 9px;
-      font-size:.72rem;
-      font-weight:1000;
-      letter-spacing:.1em;
-      margin-bottom:10px;
-    }
-
-    .coach-top h3{font-size:1.1rem;line-height:1.12;letter-spacing:-.04em;margin-bottom:8px}
-    .coach-top p{color:var(--muted);line-height:1.45;font-size:.86rem}
-
-    .coach-body{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
-
-    .cog-line{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      color:var(--gold);
-      font-size:.78rem;
-      font-weight:1000;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .mini-list{display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:.86rem;line-height:1.35}
-    .mini-list span{display:block;padding-left:14px;position:relative}
-    .mini-list span::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
-
-    .card-actions{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:9px;
-      margin-top:auto;
-    }
-
-    .small-btn{
-      min-height:42px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      font-size:.86rem;
-      font-weight:1000;
-      transition:.2s ease;
-    }
-
-    .small-btn.free{background:rgba(255,255,255,.055);color:var(--text)}
-    .small-btn.paid{background:linear-gradient(135deg, var(--gold), var(--orange));color:#100a02;border-color:transparent}
-    .small-btn:hover{transform:translateY(-1px)}
-    .small-btn.disabled{opacity:.55;cursor:not-allowed;pointer-events:none}
-
-    .drill-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:14px;
-    }
-
-    .drill-card{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.045);
-      border-radius:22px;
-      padding:16px;
-    }
-
-    .drill-card strong{display:block;color:var(--gold);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:9px}
-    .drill-card h3{font-size:1.05rem;letter-spacing:-.03em;line-height:1.15;margin-bottom:8px}
-    .drill-card p{color:var(--muted);font-size:.88rem;line-height:1.45}
-
-    .final-cta{
-      text-align:center;
-      border:1px solid rgba(240,184,74,.22);
-      background:radial-gradient(circle at center top, rgba(240,184,74,.17), transparent 44%), rgba(13,13,18,.9);
-      border-radius:30px;
-      padding:38px 22px;
-      box-shadow:var(--shadow);
-    }
-
-    .final-cta h2{font-size:clamp(2rem,5vw,4.8rem);line-height:.95;letter-spacing:-.07em;text-transform:uppercase;margin-bottom:14px}
-    .final-cta p{max-width:780px;margin:0 auto 24px;color:var(--muted);line-height:1.6;font-size:1.02rem}
-
-    footer{
-      padding:32px 0 50px;
-      color:var(--muted);
-      text-align:center;
-      border-top:1px solid var(--line);
-      margin-top:32px;
-    }
-
-    @media (max-width: 1080px){
-      .coach-grid,.drill-grid{grid-template-columns:repeat(2,1fr)}
-    }
-
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr}
-      .nav-links,.lang-inline{display:none}
-      .menu-toggle{display:block}
-      .hero-copy{text-align:center}
-      .hero-logo-wrap{margin-inline:auto;width:min(305px,84vw)}
-      .eyebrow{margin-left:auto;margin-right:auto}
-      .hero p{margin-left:auto;margin-right:auto}
-      .hero-actions{justify-content:center}
-    }
-
-    @media (max-width: 720px){
-      .wrap,.nav-inner,.mobile-menu-inner{width:min(var(--max), calc(100% - 18px))}
-      .hero{padding:28px 0 22px}
-      .section{padding:28px 0}
-      .section-head{align-items:flex-start;flex-direction:column}
-      .thesis{grid-template-columns:1fr;padding:16px;border-radius:24px}
-      .coach-grid,.drill-grid{grid-template-columns:1fr}
-      .hero-actions{display:grid;grid-template-columns:1fr;width:100%}
-      .btn{width:100%}
-      h1{font-size:clamp(2.45rem,14vw,4.7rem)}
-      .proof-panel{padding:16px}
-      .panel-head{flex-direction:column;align-items:flex-start}
-      .brand-copy strong{font-size:.95rem}
-    }
-  </style>
+  <meta
+    name="description"
+    content="Basketball Money turns cognitive skill into player value. Free COG coaches explain it. Paid COG drills prove it."
+  />
+
+  <meta property="og:title" content="Basketball Money — Cognitive Proof System" />
+  <meta
+    property="og:description"
+    content="The free coach helps you understand it. The paid COG drill helps you prove it. Basketball Money = Value."
+  />
+  <meta property="og:image" content="hoops-money.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="hoops-money.png" />
+  <link rel="stylesheet" href="css/hoops-money.css" />
 </head>
+
 <body data-lang="en">
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand-mark" href="#top" aria-label="Basketball Money Home Court">
         <img class="nav-logo" src="hoops-money.png" alt="Basketball Money logo" />
+
         <span class="brand-copy">
           <small>Basketball Money</small>
           <strong>Home Court</strong>
@@ -584,10 +36,25 @@
       </a>
 
       <div class="nav-links">
-        <a href="#system"><span class="en">System</span><span class="es">Sistema</span></a>
-        <a href="#coaches"><span class="en">Free Coaches</span><span class="es">Coaches Gratis</span></a>
-        <a href="#drills"><span class="en">COG Drills</span><span class="es">COG Drills</span></a>
-        <a href="#start"><span class="en">Start</span><span class="es">Empezar</span></a>
+        <a href="#system">
+          <span class="en">System</span>
+          <span class="es">Sistema</span>
+        </a>
+
+        <a href="#coaches">
+          <span class="en">Free Coaches</span>
+          <span class="es">Coaches Gratis</span>
+        </a>
+
+        <a href="#drills">
+          <span class="en">COG Drills</span>
+          <span class="es">COG Drills</span>
+        </a>
+
+        <a href="#start">
+          <span class="en">Start</span>
+          <span class="es">Empezar</span>
+        </a>
       </div>
 
       <div class="nav-actions">
@@ -595,16 +62,41 @@
           <button class="active" data-set-lang="en">English</button>
           <button data-set-lang="es">Español PR</button>
         </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span></span>
+        </button>
       </div>
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
       <div class="mobile-menu-inner">
-        <a href="#system" class="mobile-link"><span class="en">System</span><span class="es">Sistema</span></a>
-        <a href="#coaches" class="mobile-link"><span class="en">Free Coaches</span><span class="es">Coaches Gratis</span></a>
-        <a href="#drills" class="mobile-link"><span class="en">COG Drills</span><span class="es">COG Drills</span></a>
-        <a href="#start" class="mobile-link"><span class="en">Start</span><span class="es">Empezar</span></a>
+        <a href="#system" class="mobile-link">
+          <span class="en">System</span>
+          <span class="es">Sistema</span>
+        </a>
+
+        <a href="#coaches" class="mobile-link">
+          <span class="en">Free Coaches</span>
+          <span class="es">Coaches Gratis</span>
+        </a>
+
+        <a href="#drills" class="mobile-link">
+          <span class="en">COG Drills</span>
+          <span class="es">COG Drills</span>
+        </a>
+
+        <a href="#start" class="mobile-link">
+          <span class="en">Start</span>
+          <span class="es">Empezar</span>
+        </a>
+
         <div class="lang-menu">
           <button class="active" data-set-lang="en">English</button>
           <button data-set-lang="es">Español PR</button>
@@ -621,33 +113,105 @@
             <img class="hero-logo" src="hoops-money.png" alt="Basketball Money logo" />
           </div>
 
-          <div class="eyebrow"><span class="dot"></span><span class="en">Basketball Money = Value</span><span class="es">Basketball Money = Valor</span></div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            <span class="en">Basketball Money = Value</span>
+            <span class="es">Basketball Money = Valor</span>
+          </div>
 
           <h1>
-            <span class="en">Turn Cognitive Skill Into <span class="grad">Player Value</span></span>
-            <span class="es">Convierte Habilidad Cognitiva En <span class="grad">Valor De Jugador</span></span>
+            <span class="en">
+              Turn Cognitive Skill Into <span class="grad">Player Value</span>
+            </span>
+
+            <span class="es">
+              Convierte Habilidad Cognitiva En <span class="grad">Valor De Jugador</span>
+            </span>
           </h1>
 
-          <p class="en">The free coach helps you understand it. The paid COG drill helps you prove it. Basketball Money turns pattern recognition, reaction control, sequence recall, vision, and decision speed into real basketball value.</p>
-          <p class="es">El coach gratis te ayuda a entenderlo. El COG pago te ayuda a probarlo. Basketball Money convierte reconocimiento de patrones, control de reacción, secuencia, visión y velocidad de decisión en valor real de baloncesto.</p>
+          <p class="en">
+            The free coach helps you understand it. The paid COG drill helps you prove it.
+            Basketball Money turns pattern recognition, reaction control, sequence recall,
+            vision, and decision speed into real basketball value.
+          </p>
+
+          <p class="es">
+            El coach gratis te ayuda a entenderlo. El COG pago te ayuda a probarlo.
+            Basketball Money convierte reconocimiento de patrones, control de reacción,
+            secuencia, visión y velocidad de decisión en valor real de baloncesto.
+          </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#coaches"><span class="en">Start With A Free Coach</span><span class="es">Empieza Con Un Coach Gratis</span></a>
-            <a class="btn btn-secondary" href="#drills"><span class="en">See The COG Drills</span><span class="es">Ver Los COG Drills</span></a>
+            <a class="btn btn-primary" href="#coaches">
+              <span class="en">Start With A Free Coach</span>
+              <span class="es">Empieza Con Un Coach Gratis</span>
+            </a>
+
+            <a class="btn btn-secondary" href="#drills">
+              <span class="en">See The COG Drills</span>
+              <span class="es">Ver Los COG Drills</span>
+            </a>
           </div>
         </div>
 
         <aside class="proof-panel" aria-label="Basketball Money cognitive value system">
           <div class="panel-head">
-            <h2><span class="en">Cognitive Proof System</span><span class="es">Sistema De Prueba Cognitiva</span></h2>
-            <span class="badge"><span class="en">Free → Paid</span><span class="es">Gratis → Pago</span></span>
+            <h2>
+              <span class="en">Cognitive Proof System</span>
+              <span class="es">Sistema De Prueba Cognitiva</span>
+            </h2>
+
+            <span class="badge">
+              <span class="en">Free → Paid</span>
+              <span class="es">Gratis → Pago</span>
+            </span>
           </div>
+
           <div class="value-stack">
-            <div class="value-row"><div class="value-num">01</div><div><strong>Pattern</strong><span class="en">See what others miss.</span><span class="es">Ve lo que otros no ven.</span></div></div>
-            <div class="value-row"><div class="value-num">02</div><div><strong>Reaction</strong><span class="en">React fast without losing control.</span><span class="es">Reacciona rápido sin perder control.</span></div></div>
-            <div class="value-row"><div class="value-num">03</div><div><strong>Sequence</strong><span class="en">Remember the right action under pressure.</span><span class="es">Recuerda la acción correcta bajo presión.</span></div></div>
-            <div class="value-row"><div class="value-num">04</div><div><strong>Vision</strong><span class="en">Track more of the game at once.</span><span class="es">Lee más del juego al mismo tiempo.</span></div></div>
-            <div class="value-row"><div class="value-num">05</div><div><strong>Decision</strong><span class="en">Choose before the advantage disappears.</span><span class="es">Decide antes de que la ventaja desaparezca.</span></div></div>
+            <div class="value-row">
+              <div class="value-num">01</div>
+              <div>
+                <strong>Pattern</strong>
+                <span class="en">See what others miss.</span>
+                <span class="es">Ve lo que otros no ven.</span>
+              </div>
+            </div>
+
+            <div class="value-row">
+              <div class="value-num">02</div>
+              <div>
+                <strong>Reaction</strong>
+                <span class="en">React fast without losing control.</span>
+                <span class="es">Reacciona rápido sin perder control.</span>
+              </div>
+            </div>
+
+            <div class="value-row">
+              <div class="value-num">03</div>
+              <div>
+                <strong>Sequence</strong>
+                <span class="en">Remember the right action under pressure.</span>
+                <span class="es">Recuerda la acción correcta bajo presión.</span>
+              </div>
+            </div>
+
+            <div class="value-row">
+              <div class="value-num">04</div>
+              <div>
+                <strong>Vision</strong>
+                <span class="en">Track more of the game at once.</span>
+                <span class="es">Lee más del juego al mismo tiempo.</span>
+              </div>
+            </div>
+
+            <div class="value-row">
+              <div class="value-num">05</div>
+              <div>
+                <strong>Decision</strong>
+                <span class="en">Choose before the advantage disappears.</span>
+                <span class="es">Decide antes de que la ventaja desaparezca.</span>
+              </div>
+            </div>
           </div>
         </aside>
       </div>
@@ -656,23 +220,65 @@
     <section class="section" id="system">
       <div class="wrap">
         <div class="section-head">
-          <h2><span class="en">The New System</span><span class="es">El Nuevo Sistema</span></h2>
-          <p class="en">Basketball Money is not selling GPT links. The free MyGPTs are the discovery layer. The locked COG platform is the proof layer.</p>
-          <p class="es">Basketball Money no vende enlaces de GPT. Los MyGPTs gratis son la capa de descubrimiento. La plataforma COG bloqueada es la capa de prueba.</p>
+          <h2>
+            <span class="en">The New System</span>
+            <span class="es">El Nuevo Sistema</span>
+          </h2>
+
+          <p class="en">
+            Basketball Money is not selling GPT links. The free MyGPTs are the discovery layer.
+            The locked COG platform is the proof layer.
+          </p>
+
+          <p class="es">
+            Basketball Money no vende enlaces de GPT. Los MyGPTs gratis son la capa de descubrimiento.
+            La plataforma COG bloqueada es la capa de prueba.
+          </p>
         </div>
 
         <div class="thesis">
           <div class="thesis-card">
-            <strong><span class="en">Free Layer</span><span class="es">Capa Gratis</span></strong>
-            <h3><span class="en">The coach explains it.</span><span class="es">El coach lo explica.</span></h3>
-            <p class="en">Five free Basketball Money coaches prepare the player for the exact cognitive value each COG drill will test.</p>
-            <p class="es">Cinco coaches gratis de Basketball Money preparan al jugador para el valor cognitivo exacto que cada COG drill va a poner a prueba.</p>
+            <strong>
+              <span class="en">Free Layer</span>
+              <span class="es">Capa Gratis</span>
+            </strong>
+
+            <h3>
+              <span class="en">The coach explains it.</span>
+              <span class="es">El coach lo explica.</span>
+            </h3>
+
+            <p class="en">
+              Five free Basketball Money coaches prepare the player for the exact cognitive value
+              each COG drill will test.
+            </p>
+
+            <p class="es">
+              Cinco coaches gratis de Basketball Money preparan al jugador para el valor cognitivo
+              exacto que cada COG drill va a poner a prueba.
+            </p>
           </div>
+
           <div class="thesis-card">
-            <strong><span class="en">Paid Layer</span><span class="es">Capa Paga</span></strong>
-            <h3><span class="en">The COG drill proves it.</span><span class="es">El COG drill lo prueba.</span></h3>
-            <p class="en">The paid COG platform measures the skill, saves the result, and turns cognitive proof into basketball value.</p>
-            <p class="es">La plataforma COG paga mide la habilidad, guarda el resultado y convierte la prueba cognitiva en valor de baloncesto.</p>
+            <strong>
+              <span class="en">Paid Layer</span>
+              <span class="es">Capa Paga</span>
+            </strong>
+
+            <h3>
+              <span class="en">The COG drill proves it.</span>
+              <span class="es">El COG drill lo prueba.</span>
+            </h3>
+
+            <p class="en">
+              The paid COG platform measures the skill, saves the result, and turns cognitive proof
+              into basketball value.
+            </p>
+
+            <p class="es">
+              La plataforma COG paga mide la habilidad, guarda el resultado y convierte la prueba
+              cognitiva en valor de baloncesto.
+            </p>
           </div>
         </div>
       </div>
@@ -681,9 +287,20 @@
     <section class="section" id="coaches">
       <div class="wrap">
         <div class="section-head">
-          <h2><span class="en">Five Free Coaches</span><span class="es">Cinco Coaches Gratis</span></h2>
-          <p class="en">Each free coach teaches one cognitive value. Each one points to a paid COG drill where the player proves it.</p>
-          <p class="es">Cada coach gratis enseña un valor cognitivo. Cada uno apunta a un COG pago donde el jugador lo prueba.</p>
+          <h2>
+            <span class="en">Five Free Coaches</span>
+            <span class="es">Cinco Coaches Gratis</span>
+          </h2>
+
+          <p class="en">
+            Each free coach teaches one cognitive value. Each one points to a paid COG drill
+            where the player proves it.
+          </p>
+
+          <p class="es">
+            Cada coach gratis enseña un valor cognitivo. Cada uno apunta a un COG pago
+            donde el jugador lo prueba.
+          </p>
         </div>
 
         <div class="coach-grid" id="coachGrid"></div>
@@ -693,9 +310,20 @@
     <section class="section" id="drills">
       <div class="wrap">
         <div class="section-head">
-          <h2><span class="en">Paid COG Drills</span><span class="es">COG Drills Pagos</span></h2>
-          <p class="en">The COG drills are the locked product. They create measurable proof that can become a player profile, progress path, and Basketball Money value statement.</p>
-          <p class="es">Los COG drills son el producto bloqueado. Crean prueba medible que puede convertirse en perfil del jugador, progreso y declaración de valor Basketball Money.</p>
+          <h2>
+            <span class="en">Paid COG Drills</span>
+            <span class="es">COG Drills Pagos</span>
+          </h2>
+
+          <p class="en">
+            The COG drills are the locked product. They create measurable proof that can become
+            a player profile, progress path, and Basketball Money value statement.
+          </p>
+
+          <p class="es">
+            Los COG drills son el producto bloqueado. Crean prueba medible que puede convertirse
+            en perfil del jugador, progreso y declaración de valor Basketball Money.
+          </p>
         </div>
 
         <div class="drill-grid" id="drillGrid"></div>
@@ -705,10 +333,23 @@
     <section class="section" id="start">
       <div class="wrap">
         <div class="final-cta">
-          <h2><span class="en">Basketball Money Is Value</span><span class="es">Basketball Money Es Valor</span></h2>
-          <p class="en">Start with the free coach. Understand the skill. Then unlock the COG drill and prove the value.</p>
-          <p class="es">Empieza con el coach gratis. Entiende la habilidad. Luego desbloquea el COG drill y prueba el valor.</p>
-          <a class="btn btn-primary" href="#coaches"><span class="en">Start Free</span><span class="es">Empezar Gratis</span></a>
+          <h2>
+            <span class="en">Basketball Money Is Value</span>
+            <span class="es">Basketball Money Es Valor</span>
+          </h2>
+
+          <p class="en">
+            Start with the free coach. Understand the skill. Then unlock the COG drill and prove the value.
+          </p>
+
+          <p class="es">
+            Empieza con el coach gratis. Entiende la habilidad. Luego desbloquea el COG drill y prueba el valor.
+          </p>
+
+          <a class="btn btn-primary" href="#coaches">
+            <span class="en">Start Free</span>
+            <span class="es">Empezar Gratis</span>
+          </a>
         </div>
       </div>
     </section>
@@ -716,136 +357,16 @@
 
   <footer>
     <div class="wrap">
-      <p class="en">Basketball Money — The Business of Basketball. Cognitive skill becomes player value.</p>
-      <p class="es">Basketball Money — El Negocio del Baloncesto. La habilidad cognitiva se convierte en valor de jugador.</p>
+      <p class="en">
+        Basketball Money — The Business of Basketball. Cognitive skill becomes player value.
+      </p>
+
+      <p class="es">
+        Basketball Money — El Negocio del Baloncesto. La habilidad cognitiva se convierte en valor de jugador.
+      </p>
     </div>
   </footer>
 
-  <script>
-    const coaches = [
-      {
-        n:'001',
-        name:'Basketball Money: The Pattern Coach',
-        cog:'COG 01',
-        drill:'Pattern Recognition Drill',
-        freeUrl:'https://chatgpt.com/g/https://chatgpt.com/g/g-69f0984f5fc881918ff9630398483a75-basketball-money-the-pattern-coach',
-        paidUrl:'paid-gate.html?cog=1',
-        purpose:{en:'Learn to see repeated cues, defender habits, spacing signals, mistakes, and opportunities before reacting.', es:'Aprende a ver señales repetidas, hábitos defensivos, spacing, errores y oportunidades antes de reaccionar.'},
-        bullets:{en:['See what others miss','Recognize repeated cues','Turn pattern recognition into value'], es:['Ve lo que otros no ven','Reconoce señales repetidas','Convierte patrones en valor']}
-      },
-      {
-        n:'002',
-        name:'Basketball Money: The Reaction Control Coach',
-        cog:'COG 02',
-        drill:'Reaction Control Drill',
-        freeUrl:'',
-        paidUrl:'paid-gate.html?cog=2',
-        purpose:{en:'Learn to react quickly without panic, overreaction, emotional loss, or poor discipline.', es:'Aprende a reaccionar rápido sin pánico, sobre-reacción, pérdida emocional o falta de disciplina.'},
-        bullets:{en:['React fast with control','Stay disciplined under pressure','Turn reaction into trust'], es:['Reacciona rápido con control','Mantente disciplinado bajo presión','Convierte reacción en confianza']}
-      },
-      {
-        n:'003',
-        name:'Basketball Money: The Sequence Recall Coach',
-        cog:'COG 03',
-        drill:'Sequence Recall Drill',
-        freeUrl:'',
-        paidUrl:'paid-gate.html?cog=3',
-        purpose:{en:'Learn to remember sequences, reads, instructions, and the right action when pressure rises.', es:'Aprende a recordar secuencias, lecturas, instrucciones y la acción correcta cuando sube la presión.'},
-        bullets:{en:['Remember under pressure','Build sequence discipline','Prove mental organization'], es:['Recuerda bajo presión','Construye disciplina de secuencia','Prueba organización mental']}
-      },
-      {
-        n:'004',
-        name:'Basketball Money: The Vision Coach',
-        cog:'COG 04',
-        drill:'Multi-Target Vision Drill',
-        freeUrl:'',
-        paidUrl:'paid-gate.html?cog=4',
-        purpose:{en:'Learn to track multiple targets: ball, defenders, teammates, space, timing, and pressure.', es:'Aprende a seguir múltiples objetivos: balón, defensores, compañeros, espacio, timing y presión.'},
-        bullets:{en:['Track more than one target','Read the whole floor','Turn vision into opportunity'], es:['Sigue más de un objetivo','Lee toda la cancha','Convierte visión en oportunidad']}
-      },
-      {
-        n:'005',
-        name:'Basketball Money: The Decision Speed Coach',
-        cog:'COG 05',
-        drill:'Decision Speed Blueprint Drill',
-        freeUrl:'',
-        paidUrl:'paid-gate.html?cog=5',
-        purpose:{en:'Learn to make faster, smarter decisions without playing rushed or losing the advantage.', es:'Aprende a tomar decisiones más rápidas e inteligentes sin jugar apresurado ni perder la ventaja.'},
-        bullets:{en:['Process fast without rushing','Choose before the window closes','Build your Basketball Money Blueprint'], es:['Procesa rápido sin apresurarte','Decide antes de que cierre la ventana','Construye tu Blueprint Basketball Money']}
-      }
-    ];
-
-    const body = document.body;
-    const coachGrid = document.getElementById('coachGrid');
-    const drillGrid = document.getElementById('drillGrid');
-
-    function lang(){return body.dataset.lang || 'en'}
-
-    function render(){
-      const current = lang();
-      coachGrid.innerHTML = coaches.map(coach => {
-        const freeBtn = coach.freeUrl
-          ? `<a class="small-btn free" href="${coach.freeUrl}" target="_blank" rel="noopener noreferrer">${current === 'en' ? 'Open Free Coach' : 'Abrir Coach Gratis'}</a>`
-          : `<a class="small-btn free disabled" href="#">${current === 'en' ? 'Free Coach Link Coming' : 'Enlace Del Coach Próximamente'}</a>`;
-        return `
-          <article class="coach-card">
-            <div class="coach-top">
-              <span class="coach-number">${coach.n}</span>
-              <h3>${coach.name}</h3>
-              <p>${coach.purpose[current]}</p>
-            </div>
-            <div class="coach-body">
-              <div class="cog-line"><span>${coach.cog}</span><span>🔒</span></div>
-              <div class="mini-list">
-                ${coach.bullets[current].map(item => `<span>${item}</span>`).join('')}
-              </div>
-              <div class="card-actions">
-                ${freeBtn}
-                <a class="small-btn paid" href="${coach.paidUrl}">${current === 'en' ? `Unlock ${coach.cog}` : `Desbloquear ${coach.cog}`}</a>
-              </div>
-            </div>
-          </article>
-        `;
-      }).join('');
-
-      drillGrid.innerHTML = coaches.map(coach => `
-        <article class="drill-card">
-          <strong>${coach.cog}</strong>
-          <h3>${coach.drill}</h3>
-          <p>${coach.purpose[current]}</p>
-        </article>
-      `).join('');
-    }
-
-    function setLanguage(nextLang){
-      body.dataset.lang = nextLang;
-      document.documentElement.lang = nextLang === 'es' ? 'es' : 'en';
-      document.querySelectorAll('[data-set-lang]').forEach(btn => btn.classList.toggle('active', btn.dataset.setLang === nextLang));
-      render();
-    }
-
-    document.querySelectorAll('[data-set-lang]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.setLang)));
-
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    function closeMenu(){
-      mobileMenu.classList.remove('open');
-      menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded','false');
-    }
-
-    function openMenu(){
-      mobileMenu.classList.add('open');
-      menuToggle.classList.add('active');
-      menuToggle.setAttribute('aria-expanded','true');
-    }
-
-    menuToggle.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
-    document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
-    window.addEventListener('resize', () => { if(window.innerWidth > 920) closeMenu(); });
-
-    render();
-  </script>
+  <script src="js/hoops-money.js"></script>
 </body>
 </html>
