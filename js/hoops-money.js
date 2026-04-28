@@ -7,7 +7,7 @@ const coaches = [
     cogName: 'React',
     image: 'images/image-001.png',
     freeUrl: 'https://chatgpt.com/g/g-69f0984f5fc881918ff9630398483a75-basketball-money-the-pattern-coach',
-    paidUrl: 'paid-gate.html?cog=1',
+    cogUrl: '/cogs/cog-01.html',
     purpose: {
       en: 'Learn to see repeated cues, defender habits, spacing signals, mistakes, and opportunities before reacting.',
       es: 'Aprende a ver señales repetidas, hábitos defensivos, spacing, errores y oportunidades antes de reaccionar.'
@@ -17,8 +17,8 @@ const coaches = [
       es: ['Ve lo que otros no ven', 'Reconoce señales repetidas', 'Convierte patrones en valor']
     },
     drill: {
-      en: 'Proves how quickly the player recognizes cues and reacts to what is happening.',
-      es: 'Prueba cuán rápido el jugador reconoce señales y reacciona a lo que está pasando.'
+      en: 'Test how quickly you recognize cues and react to what is happening.',
+      es: 'Prueba cuán rápido reconoces señales y reaccionas a lo que está pasando.'
     }
   },
   {
@@ -29,7 +29,7 @@ const coaches = [
     cogName: 'Recall',
     image: 'images/image-002.png',
     freeUrl: 'https://chatgpt.com/g/g-69f0aa32ab2481918057aa69e24fd03d-basketball-money-the-reaction-control-coach',
-    paidUrl: 'paid-gate.html?cog=2',
+    cogUrl: '/cogs/cog-02.html',
     purpose: {
       en: 'Learn to react quickly without panic, overreaction, emotional loss, or poor discipline.',
       es: 'Aprende a reaccionar rápido sin pánico, sobre-reacción, pérdida emocional o falta de disciplina.'
@@ -39,8 +39,8 @@ const coaches = [
       es: ['Reacciona rápido con control', 'Mantente disciplinado bajo presión', 'Convierte reacción en confianza']
     },
     drill: {
-      en: 'Proves how well the player remembers and uses information under pressure.',
-      es: 'Prueba qué tan bien el jugador recuerda y usa información bajo presión.'
+      en: 'Test how well you remember and use information under pressure.',
+      es: 'Prueba qué tan bien recuerdas y usas información bajo presión.'
     }
   },
   {
@@ -51,7 +51,7 @@ const coaches = [
     cogName: 'Reflex',
     image: 'images/image-003.png',
     freeUrl: 'https://chatgpt.com/g/g-69f0b04f020881918fa092260f66f476-basketball-money-the-sequence-recall-coach',
-    paidUrl: 'paid-gate.html?cog=3',
+    cogUrl: '/cogs/cog-03.html',
     purpose: {
       en: 'Learn to remember sequences, reads, instructions, and the right action when pressure rises.',
       es: 'Aprende a recordar secuencias, lecturas, instrucciones y la acción correcta cuando sube la presión.'
@@ -61,7 +61,7 @@ const coaches = [
       es: ['Recuerda bajo presión', 'Construye disciplina de secuencia', 'Prueba organización mental']
     },
     drill: {
-      en: 'Proves reaction quality, timing, discipline, and quick response control.',
+      en: 'Test reaction quality, timing, discipline, and quick response control.',
       es: 'Prueba calidad de reacción, timing, disciplina y control de respuesta rápida.'
     }
   },
@@ -73,7 +73,7 @@ const coaches = [
     cogName: 'Replay',
     image: 'images/image-004.png',
     freeUrl: 'https://chatgpt.com/g/g-69f0b5d6284881918080e60ba5345884-basketball-money-the-vision-coach',
-    paidUrl: 'paid-gate.html?cog=4',
+    cogUrl: '/cogs/cog-04.html',
     purpose: {
       en: 'Learn to track multiple targets: ball, defenders, teammates, space, timing, and pressure.',
       es: 'Aprende a seguir múltiples objetivos: balón, defensores, compañeros, espacio, timing y presión.'
@@ -83,8 +83,8 @@ const coaches = [
       es: ['Sigue más de un objetivo', 'Lee toda la cancha', 'Convierte visión en oportunidad']
     },
     drill: {
-      en: 'Proves how well the player tracks, remembers, and replays game-like information.',
-      es: 'Prueba cómo el jugador sigue, recuerda y reproduce información parecida al juego.'
+      en: 'Test how well you track, remember, and replay game-like information.',
+      es: 'Prueba cómo sigues, recuerdas y reproduces información parecida al juego.'
     }
   },
   {
@@ -95,7 +95,7 @@ const coaches = [
     cogName: 'Ritmo',
     image: 'images/image-005.png',
     freeUrl: 'https://chatgpt.com/g/g-69f0bc40872c81919fc54d2dda4904cb-basketball-money-the-decision-speed-coach',
-    paidUrl: 'paid-gate.html?cog=5',
+    cogUrl: '/cogs/cog-05.html',
     purpose: {
       en: 'Learn to make faster, smarter decisions without playing rushed or losing the advantage.',
       es: 'Aprende a tomar decisiones más rápidas e inteligentes sin jugar apresurado ni perder la ventaja.'
@@ -105,7 +105,7 @@ const coaches = [
       es: ['Procesa rápido sin apresurarte', 'Decide antes de que cierre la ventana', 'Construye tu Blueprint Basketball Money']
     },
     drill: {
-      en: 'Proves rhythm, timing, decision speed, and the ability to stay composed in flow.',
+      en: 'Test rhythm, timing, decision speed, and the ability to stay composed in flow.',
       es: 'Prueba ritmo, timing, velocidad de decisión y la habilidad de mantenerse compuesto en flujo.'
     }
   }
@@ -140,7 +140,7 @@ function render(){
       <div class="coach-body">
         <div class="cog-line">
           <span>${coach.cog}</span>
-          <span>🔒</span>
+          <span>FREE</span>
         </div>
 
         <p class="cog-name">${coach.cogName}</p>
@@ -154,8 +154,8 @@ function render(){
             ${current === 'en' ? 'Open Free Coach' : 'Abrir Coach Gratis'}
           </a>
 
-          <a class="small-btn paid" href="${coach.paidUrl}">
-            ${current === 'en' ? `Unlock ${coach.cog}` : `Desbloquear ${coach.cog}`}
+          <a class="small-btn paid" href="${coach.cogUrl}">
+            ${current === 'en' ? `Play Free ${coach.cog}` : `Jugar ${coach.cog} Gratis`}
           </a>
         </div>
       </div>
@@ -167,6 +167,9 @@ function render(){
       <strong>${coach.cog}</strong>
       <h3>${coach.cogName}</h3>
       <p>${coach.drill[current]}</p>
+      <a class="small-btn paid" href="${coach.cogUrl}" style="margin-top:14px;">
+        ${current === 'en' ? `Play Free ${coach.cog}` : `Jugar ${coach.cog} Gratis`}
+      </a>
     </article>
   `).join('');
 }
