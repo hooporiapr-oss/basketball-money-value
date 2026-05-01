@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Basketball Money Apparel — Wear The Value</title>
+  <title>Basketball Money Team Store — Wear The Value</title>
 
   <meta
     name="description"
-    content="Basketball Money Apparel is value you can wear. Streetwear for players who walk onto every court like it is a red carpet."
+    content="Basketball Money Team Store is the official apparel home for Basketball Money. Wear the value. Represent the standard."
   />
 
   <link rel="icon" href="hoops-money.png" />
@@ -17,7 +17,6 @@
     :root{
       --black:#050507;
       --panel:#101016;
-      --panel2:#171720;
       --gold:#f2b94b;
       --orange:#ff7a1a;
       --teal:#21f5d0;
@@ -29,7 +28,6 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-
     html{scroll-behavior:smooth}
 
     body{
@@ -37,9 +35,10 @@
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color:var(--white);
       background:
-        radial-gradient(circle at 15% 0%, rgba(242,185,75,.22), transparent 30%),
-        radial-gradient(circle at 85% 15%, rgba(33,245,208,.12), transparent 26%),
-        linear-gradient(180deg,#050507 0%,#09090d 45%,#050507 100%);
+        radial-gradient(circle at 15% 0%, rgba(242,185,75,.24), transparent 30%),
+        radial-gradient(circle at 85% 12%, rgba(255,122,26,.16), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(33,245,208,.10), transparent 30%),
+        linear-gradient(180deg,#050507 0%,#09090d 48%,#050507 100%);
       overflow-x:hidden;
     }
 
@@ -58,16 +57,13 @@
 
     a{text-decoration:none;color:inherit}
 
-    .wrap{
-      width:min(var(--max), calc(100% - 24px));
-      margin:auto;
-    }
+    .wrap{width:min(var(--max), calc(100% - 24px));margin:auto}
 
     .nav{
       position:sticky;
       top:0;
       z-index:50;
-      background:rgba(5,5,7,.86);
+      background:rgba(5,5,7,.88);
       backdrop-filter:blur(18px);
       border-bottom:1px solid var(--line);
     }
@@ -103,13 +99,11 @@
       text-transform:uppercase;
     }
 
-    .brand strong{
-      display:block;
-      letter-spacing:-.03em;
-    }
+    .brand strong{display:block;letter-spacing:-.03em}
 
     .nav-links{
       display:flex;
+      align-items:center;
       gap:18px;
       color:var(--muted);
       font-size:.9rem;
@@ -140,20 +134,14 @@
       box-shadow:0 16px 42px rgba(255,122,26,.25);
     }
 
-    .btn-dark{
-      background:rgba(255,255,255,.06);
-      color:var(--white);
-    }
+    .btn-dark{background:rgba(255,255,255,.06);color:var(--white)}
 
-    .hero{
-      padding:48px 0 32px;
-      position:relative;
-    }
+    .hero{padding:54px 0 34px;position:relative}
 
     .hero-grid{
       display:grid;
       grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);
-      gap:30px;
+      gap:32px;
       align-items:center;
     }
 
@@ -182,11 +170,11 @@
     }
 
     h1{
-      font-size:clamp(3rem,9vw,7.6rem);
+      font-size:clamp(3rem,9vw,7.3rem);
       line-height:.86;
       letter-spacing:-.08em;
       text-transform:uppercase;
-      max-width:780px;
+      max-width:820px;
     }
 
     .gold{
@@ -196,29 +184,24 @@
     }
 
     .hero-copy p{
-      max-width:700px;
+      max-width:720px;
       margin-top:20px;
       color:var(--muted);
       font-size:clamp(1.05rem,1.7vw,1.25rem);
       line-height:1.62;
     }
 
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:26px;
-    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 
     .hero-card{
       position:relative;
-      border:1px solid rgba(242,185,75,.24);
+      border:1px solid rgba(242,185,75,.28);
       background:
-        radial-gradient(circle at 30% 0%, rgba(242,185,75,.16), transparent 36%),
+        radial-gradient(circle at 30% 0%, rgba(242,185,75,.18), transparent 36%),
         rgba(255,255,255,.045);
       border-radius:34px;
-      padding:12px;
-      box-shadow:0 30px 90px rgba(0,0,0,.48);
+      padding:14px;
+      box-shadow:0 30px 90px rgba(0,0,0,.5);
       overflow:hidden;
     }
 
@@ -232,27 +215,27 @@
     }
 
     .hero-card::after{
-      content:"VALUE";
+      content:"TEAM STORE";
       position:absolute;
       right:18px;
-      bottom:14px;
+      bottom:16px;
       color:rgba(255,255,255,.08);
-      font-size:clamp(3rem,8vw,6rem);
+      font-size:clamp(2.4rem,6vw,4.8rem);
       font-weight:1000;
       letter-spacing:-.08em;
       pointer-events:none;
+      text-transform:uppercase;
     }
 
-    .statement{
-      padding:24px 0 40px;
-    }
+    .statement{padding:26px 0 42px}
 
     .statement-box{
       border:1px solid var(--line);
       background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
       border-radius:34px;
-      padding:clamp(22px,5vw,48px);
+      padding:clamp(24px,5vw,50px);
       text-align:center;
+      box-shadow:0 26px 80px rgba(0,0,0,.32);
     }
 
     .statement-box h2{
@@ -271,16 +254,14 @@
       line-height:1.65;
     }
 
-    .section{
-      padding:44px 0;
-    }
+    .section{padding:46px 0}
 
     .section-head{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
       gap:20px;
-      margin-bottom:20px;
+      margin-bottom:22px;
     }
 
     .section-head h2{
@@ -290,11 +271,7 @@
       text-transform:uppercase;
     }
 
-    .section-head p{
-      max-width:560px;
-      color:var(--muted);
-      line-height:1.6;
-    }
+    .section-head p{max-width:580px;color:var(--muted);line-height:1.6}
 
     .drop-grid{
       display:grid;
@@ -324,14 +301,17 @@
       position:absolute;
       inset:auto 0 0;
       padding:28px;
-      background:linear-gradient(180deg,transparent,rgba(0,0,0,.88));
+      background:linear-gradient(180deg,transparent,rgba(0,0,0,.9));
     }
 
-    .feature-overlay strong{
+    .feature-overlay strong,
+    .product-card strong,
+    .vibe-card span{
       color:var(--gold);
       text-transform:uppercase;
       letter-spacing:.14em;
       font-size:.78rem;
+      font-weight:1000;
     }
 
     .feature-overlay h3{
@@ -342,17 +322,15 @@
       text-transform:uppercase;
     }
 
-    .feature-overlay p{
-      max-width:620px;
+    .feature-overlay p,
+    .product-card p,
+    .vibe-card p{
       margin-top:12px;
       color:var(--muted);
       line-height:1.55;
     }
 
-    .product-stack{
-      display:grid;
-      gap:16px;
-    }
+    .product-stack{display:grid;gap:16px}
 
     .product-card{
       border:1px solid var(--line);
@@ -362,25 +340,12 @@
       min-height:174px;
     }
 
-    .product-card strong{
-      color:var(--gold);
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-    }
-
     .product-card h3{
       margin-top:10px;
       font-size:1.7rem;
       line-height:1;
       letter-spacing:-.05em;
       text-transform:uppercase;
-    }
-
-    .product-card p{
-      margin-top:10px;
-      color:var(--muted);
-      line-height:1.55;
     }
 
     .vibe-grid{
@@ -398,15 +363,10 @@
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      transition:.2s ease;
     }
 
-    .vibe-card span{
-      color:var(--gold);
-      font-size:.76rem;
-      font-weight:1000;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
+    .vibe-card:hover{transform:translateY(-3px);border-color:rgba(242,185,75,.35)}
 
     .vibe-card h3{
       margin-top:12px;
@@ -416,21 +376,40 @@
       text-transform:uppercase;
     }
 
-    .vibe-card p{
-      margin-top:14px;
-      color:var(--muted);
-      line-height:1.55;
+    .logo-band{
+      padding:40px 0;
     }
 
-    .cta{
-      padding:48px 0 70px;
+    .logo-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:16px;
     }
+
+    .logo-card{
+      border:1px solid rgba(242,185,75,.24);
+      border-radius:30px;
+      background:rgba(255,255,255,.045);
+      padding:26px;
+      min-height:360px;
+      display:grid;
+      place-items:center;
+      box-shadow:0 26px 80px rgba(0,0,0,.34);
+    }
+
+    .logo-card img{
+      width:min(100%,420px);
+      border-radius:24px;
+      filter:drop-shadow(0 24px 42px rgba(242,185,75,.22));
+    }
+
+    .cta{padding:50px 0 74px}
 
     .cta-box{
       text-align:center;
       border:1px solid rgba(242,185,75,.28);
       border-radius:38px;
-      padding:clamp(28px,6vw,64px) 22px;
+      padding:clamp(30px,6vw,66px) 22px;
       background:
         radial-gradient(circle at center top, rgba(242,185,75,.20), transparent 42%),
         rgba(255,255,255,.045);
@@ -462,46 +441,18 @@
 
     @media(max-width:900px){
       .nav-links{display:none}
-
-      .hero-grid,
-      .drop-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-copy{
-        text-align:center;
-      }
-
-      .hero-actions{
-        justify-content:center;
-      }
-
-      .section-head{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .vibe-grid{
-        grid-template-columns:1fr;
-      }
-
-      .feature-product,
-      .feature-product img{
-        min-height:auto;
-      }
+      .hero-grid,.drop-grid,.logo-grid{grid-template-columns:1fr}
+      .hero-copy{text-align:center}
+      .hero-actions{justify-content:center}
+      .section-head{flex-direction:column;align-items:flex-start}
+      .vibe-grid{grid-template-columns:1fr}
+      .feature-product,.feature-product img{min-height:auto}
     }
 
     @media(max-width:620px){
-      .hero-actions{
-        display:grid;
-        grid-template-columns:1fr;
-      }
-
+      .hero-actions{display:grid;grid-template-columns:1fr}
       .btn{width:100%}
-
-      h1{
-        font-size:clamp(3rem,17vw,5rem);
-      }
+      h1{font-size:clamp(3rem,17vw,5rem)}
     }
   </style>
 </head>
@@ -513,15 +464,15 @@
         <img src="hoops-money.png" alt="Basketball Money logo" />
         <span>
           <small>Basketball Money</small>
-          <strong>Apparel</strong>
+          <strong>Team Store</strong>
         </span>
       </a>
 
       <div class="nav-links">
         <a href="#drop">The Drop</a>
         <a href="#feeling">The Feeling</a>
-        <a href="#free">Free Program</a>
-        <a href="https://shop.hoops.money">Shop</a>
+        <a href="#identity">Team Identity</a>
+        <a href="https://shop.hoops.money">Hoops Money Store</a>
       </div>
     </div>
   </nav>
@@ -530,26 +481,26 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="dot"></span> Basketball Money = Value</div>
+          <div class="eyebrow"><span class="dot"></span> Official Basketball Money Team Store</div>
 
           <h1>
             Wear The <span class="gold">Value</span>
           </h1>
 
           <p>
-            Basketball Money Apparel is streetwear for the player who treats every sidewalk,
-            every gym, every community court, and every room like a red carpet.
-            The product is the feeling.
+            This is the Basketball Money Team Store — the apparel home for players, coaches,
+            and believers who move with value before the game even starts. The logo stays.
+            The standard rises.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-gold" href="https://shop.hoops.money">Shop The Drop</a>
-            <a class="btn btn-dark" href="#free">Train Free First</a>
+            <a class="btn btn-gold" href="https://shop.hoops.money">Enter Hoops Money Store</a>
+            <a class="btn btn-dark" href="#drop">View Team Store</a>
           </div>
         </div>
 
         <div class="hero-card">
-          <img src="bm-logo.png" alt="Basketball Money Crown Series" />
+          <img src="bm-logo.png" alt="Basketball Money Team Store logo" />
         </div>
       </div>
     </section>
@@ -559,9 +510,8 @@
         <div class="statement-box">
           <h2>The Product Is The <span class="gold">Feeling</span></h2>
           <p>
-            This is not basic merch. This is confidence you can wear. It is the emotion
-            a young player feels walking onto the community court dressed for success:
-            golden, valuable, focused, and ready to be seen.
+            This is not basic merch. This is presence. This is walking into the gym already
+            carrying the standard: focused, valuable, visible, and ready to be seen.
           </p>
         </div>
       </div>
@@ -570,10 +520,10 @@
     <section class="section" id="drop">
       <div class="wrap">
         <div class="section-head">
-          <h2>First Value Drop</h2>
+          <h2>Basketball Money Team Store</h2>
           <p>
-            A streetwear basketball identity line built around the BM crown, premium black,
-            gold energy, and the belief that value should be visible.
+            A basketball identity line built around the BM crown, black-and-gold energy,
+            and the belief that value should be visible.
           </p>
         </div>
 
@@ -582,45 +532,45 @@
             <img src="bm-logo.png" alt="Basketball Money Crown Series image" />
 
             <div class="feature-overlay">
-              <strong>Hero Piece</strong>
-              <h3>BM Crown Shorts</h3>
+              <strong>Signature Identity</strong>
+              <h3>BM Crown Series</h3>
               <p>
-                Black mesh basketball shorts with the BM crown mark. Built to feel like
-                value on the court, in the street, and everywhere the player shows up.
+                The crown mark represents value, confidence, and the standard you carry
+                into every court, street, gym, and room.
               </p>
             </div>
           </article>
 
           <div class="product-stack">
             <article class="product-card">
-              <strong>Piece 01</strong>
+              <strong>Team Piece 01</strong>
               <h3>BM Crown Tee</h3>
-              <p>Premium tee with a bold front block and Basketball Money identity detail.</p>
+              <p>Bold Basketball Money identity built for the player who shows up with presence.</p>
             </article>
 
             <article class="product-card">
-              <strong>Piece 02</strong>
+              <strong>Team Piece 02</strong>
               <h3>BM Crown Shorts</h3>
-              <p>Basketball mesh shorts with gold value energy and streetwear confidence.</p>
+              <p>Basketball mesh shorts with black-and-gold value energy and street confidence.</p>
             </article>
 
             <article class="product-card">
-              <strong>Piece 03</strong>
+              <strong>Team Piece 03</strong>
               <h3>Full Value Set</h3>
-              <p>The tee and shorts together. Dressed for success from the court to the street.</p>
+              <p>The full look. Court-ready, street-ready, and built around Basketball Money identity.</p>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="identity">
       <div class="wrap">
         <div class="section-head">
-          <h2>NYC Street Energy</h2>
+          <h2>Team Identity</h2>
           <p>
-            Basketball Money moves like city confidence: court-ready, street-ready,
-            camera-ready. Everywhere you go becomes the runway.
+            Basketball Money apparel is not separate from the game. It is how the standard
+            shows up before the first possession.
           </p>
         </div>
 
@@ -629,63 +579,36 @@
             <div>
               <span>01</span>
               <h3>Walk Like Value</h3>
-              <p>You are not just arriving. You are showing up with presence.</p>
+              <p>You are not just arriving. You are stepping in with purpose and presence.</p>
             </div>
           </article>
 
           <article class="vibe-card">
             <div>
               <span>02</span>
-              <h3>Dress For Success</h3>
-              <p>The community court becomes the first red carpet.</p>
+              <h3>Wear The Standard</h3>
+              <p>The logo is not decoration. It represents how you carry yourself.</p>
             </div>
           </article>
 
           <article class="vibe-card">
             <div>
               <span>03</span>
-              <h3>Play With Purpose</h3>
-              <p>The free program trains the mind. The apparel puts the value on your body.</p>
+              <h3>Represent The Team</h3>
+              <p>Basketball Money is value. The Team Store makes that value visible.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="free">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Free Online Program</h2>
-          <p>
-            The apparel is the identity. The program is the development. Basketball Money gives
-            the player free access to train the mind before they wear the value.
-          </p>
+    <section class="logo-band">
+      <div class="wrap logo-grid">
+        <div class="logo-card">
+          <img src="hoops-money.png" alt="Hoops Money logo" />
         </div>
-
-        <div class="vibe-grid">
-          <a class="vibe-card" href="cogs/cog-01.html">
-            <div>
-              <span>COG 01</span>
-              <h3>React</h3>
-              <p>Start the free cognitive training layer.</p>
-            </div>
-          </a>
-
-          <a class="vibe-card" href="cogs/cog-02.html">
-            <div>
-              <span>COG 02</span>
-              <h3>Recall</h3>
-              <p>Train memory, pressure, and response.</p>
-            </div>
-          </a>
-
-          <a class="vibe-card" href="cogs/cog-05.html">
-            <div>
-              <span>COG 05</span>
-              <h3>Ritmo</h3>
-              <p>Control rhythm, timing, and decision speed.</p>
-            </div>
-          </a>
+        <div class="logo-card">
+          <img src="bm-logo.png" alt="Basketball Money logo" />
         </div>
       </div>
     </section>
@@ -696,10 +619,10 @@
           <h2>Everywhere Is A <span class="gold">Red Carpet</span></h2>
           <p>
             From the community court to the city street, Basketball Money is value you can wear.
-            Walk in different. Play with purpose. Show up golden.
+            Walk in different. Represent the standard. Show up golden.
           </p>
 
-          <a class="btn btn-gold" href="https://shop.hoops.money">Shop Basketball Money Apparel</a>
+          <a class="btn btn-gold" href="https://shop.hoops.money">Enter Hoops Money Store</a>
         </div>
       </div>
     </section>
@@ -707,7 +630,7 @@
 
   <footer>
     <div class="wrap">
-      Basketball Money — The Business of Basketball. Wear the Value.
+      Basketball Money Team Store — Wear The Value.
     </div>
   </footer>
 </body>
