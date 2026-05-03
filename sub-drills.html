@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subliminal Drills | Subliminal Basketball</title>
+
+  <style>
+    :root {
+      --black: #050505;
+      --dark: #0b0b0b;
+      --gold: #f5b642;
+      --orange: #ff7a18;
+      --teal: #11d9c5;
+      --purple: #b45cff;
+      --pink: #ff3faf;
+      --white: #ffffff;
+      --muted: #b8b8b8;
+      --card: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(245, 182, 66, 0.22), transparent 34%),
+        radial-gradient(circle at top right, rgba(180, 92, 255, 0.14), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(17, 217, 197, 0.14), transparent 35%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #050505 100%);
+      color: var(--white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .site-header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      background: rgba(5, 5, 5, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    main {
+      padding-top: 86px;
+    }
+
+    .top-nav {
+      width: min(100%, 1480px);
+      margin: 0 auto;
+      padding: 14px 6%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .nav-logo {
+      width: clamp(42px, 7vw, 58px);
+      height: clamp(42px, 7vw, 58px);
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 18px rgba(245, 182, 66, 0.35));
+    }
+
+    .nav-title {
+      min-width: 0;
+      font-size: clamp(0.86rem, 2.2vw, 1.18rem);
+      font-weight: 950;
+      letter-spacing: clamp(0.05em, 0.8vw, 0.12em);
+      line-height: 1.05;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--white), var(--gold), var(--orange), var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      overflow-wrap: anywhere;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .language-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      min-height: 42px;
+    }
+
+    .language-toggle button {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 0 14px;
+      cursor: pointer;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .language-toggle button.active {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #050505;
+    }
+
+    .hamburger {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      transform: translateY(-1px);
+      border-color: rgba(245, 182, 66, 0.55);
+    }
+
+    .hamburger span {
+      width: 19px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--white);
+      display: block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 6%;
+      width: min(345px, calc(100vw - 28px));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(245, 182, 66, 0.18), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(17, 217, 197, 0.12), transparent 42%),
+        rgba(8, 8, 8, 0.97);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+      padding: 12px;
+      display: none;
+    }
+
+    .nav-menu.open {
+      display: block;
+    }
+
+    .nav-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 15px 14px;
+      border-radius: 16px;
+      color: var(--white);
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      font-size: 0.83rem;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--gold);
+      outline: none;
+    }
+
+    .nav-menu a::after {
+      content: "→";
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .hero {
+      width: min(100%, 1480px);
+      margin: 0 auto;
+      min-height: calc(100svh - 86px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      padding: clamp(42px, 7vw, 76px) 6% 74px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.24;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1080px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: clamp(0.72rem, 1.6vw, 0.83rem);
+      margin-bottom: 18px;
+    }
+
+    .hero-logo-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 4px 0 26px;
+    }
+
+    .hero-logo {
+      width: clamp(155px, 18vw, 250px);
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 28px rgba(245, 182, 66, 0.42));
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 7.6rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+
+    h1 span {
+      display: block;
+      background: linear-gradient(135deg, var(--white), var(--gold), var(--orange), var(--teal));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.58rem);
+      line-height: 1.45;
+      color: var(--white);
+      max-width: 850px;
+      margin: 0 auto 22px;
+      font-weight: 850;
+    }
+
+    .hero-copy {
+      max-width: 860px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(0.98rem, 1.45vw, 1.08rem);
+      line-height: 1.75;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #050505;
+      box-shadow: 0 18px 45px rgba(245, 182, 66, 0.22);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .section-shell {
+      width: min(100%, 1480px);
+      margin: 0 auto;
+      padding: 84px 6%;
+    }
+
+    .section-heading {
+      max-width: 920px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .section-heading .kicker {
+      color: var(--teal);
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      margin-bottom: 14px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2.2rem, 5.4vw, 5.1rem);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.55vw, 1.12rem);
+      line-height: 1.7;
+    }
+
+    .drill-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .drill-card {
+      position: relative;
+      min-height: 390px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      overflow: hidden;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at top left, rgba(245, 182, 66, 0.15), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(17, 217, 197, 0.12), transparent 42%),
+        rgba(255, 255, 255, 0.052);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.26);
+    }
+
+    .drill-card:nth-child(2) {
+      background:
+        radial-gradient(circle at top left, rgba(255, 63, 175, 0.15), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(245, 182, 66, 0.12), transparent 42%),
+        rgba(255, 255, 255, 0.052);
+    }
+
+    .drill-card:nth-child(3) {
+      background:
+        radial-gradient(circle at top left, rgba(17, 217, 197, 0.16), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(180, 92, 255, 0.14), transparent 42%),
+        rgba(255, 255, 255, 0.052);
+    }
+
+    .drill-card:nth-child(4) {
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 24, 0.15), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(255, 63, 175, 0.13), transparent 42%),
+        rgba(255, 255, 255, 0.052);
+    }
+
+    .drill-card:nth-child(5) {
+      background:
+        radial-gradient(circle at top left, rgba(180, 92, 255, 0.16), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(17, 217, 197, 0.13), transparent 42%),
+        rgba(255, 255, 255, 0.052);
+    }
+
+    .drill-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 23px;
+      pointer-events: none;
+    }
+
+    .drill-number {
+      position: relative;
+      z-index: 2;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      color: #050505;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      box-shadow: 0 14px 34px rgba(245, 182, 66, 0.2);
+    }
+
+    .drill-content {
+      position: relative;
+      z-index: 2;
+      margin-top: 30px;
+    }
+
+    .drill-content h3 {
+      font-size: clamp(1.48rem, 2.2vw, 2rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .drill-content p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.62;
+      margin-bottom: 16px;
+    }
+
+    .drill-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(17, 217, 197, 0.35);
+      background: rgba(17, 217, 197, 0.1);
+      color: var(--teal);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .drill-footer {
+      position: relative;
+      z-index: 2;
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-weight: 900;
+      line-height: 1.45;
+      font-size: 0.92rem;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .drill-link {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #050505;
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 14px 34px rgba(245, 182, 66, 0.18);
+    }
+
+    .drill-link:hover,
+    .drill-link:focus-visible {
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .method-card {
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: clamp(28px, 5vw, 58px);
+      background:
+        radial-gradient(circle at top left, rgba(245, 182, 66, 0.18), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(17, 217, 197, 0.13), transparent 40%),
+        rgba(255, 255, 255, 0.06);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.28);
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .method-card h2 {
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+    }
+
+    .method-copy p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.55vw, 1.1rem);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .method-copy strong {
+      color: var(--white);
+    }
+
+    footer {
+      width: 100%;
+      padding: 36px 6%;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    [data-lang="es"] {
+      display: none;
+    }
+
+    body.es [data-lang="en"] {
+      display: none;
+    }
+
+    body.es [data-lang="es"] {
+      display: block;
+    }
+
+    body.es span[data-lang="es"],
+    body.es strong[data-lang="es"] {
+      display: inline;
+    }
+
+    body.es span[data-lang="en"],
+    body.es strong[data-lang="en"] {
+      display: none;
+    }
+
+    @media (max-width: 1180px) {
+      .drill-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .drill-card {
+        min-height: 355px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .method-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      main {
+        padding-top: 76px;
+      }
+
+      .top-nav {
+        padding: 12px 5%;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav-brand {
+        gap: 9px;
+      }
+
+      .nav-logo {
+        width: 44px;
+        height: 44px;
+      }
+
+      .nav-title {
+        font-size: 0.84rem;
+        letter-spacing: 0.07em;
+        max-width: 170px;
+      }
+
+      .nav-actions {
+        gap: 8px;
+      }
+
+      .language-toggle {
+        min-height: 40px;
+      }
+
+      .language-toggle button {
+        padding: 0 10px;
+        font-size: 0.66rem;
+      }
+
+      .hamburger {
+        width: 42px;
+        height: 42px;
+      }
+
+      .nav-menu {
+        right: 5%;
+        top: calc(100% + 8px);
+      }
+
+      .hero {
+        padding: 38px 5% 64px;
+        min-height: auto;
+      }
+
+      .hero-logo {
+        width: clamp(145px, 38vw, 205px);
+      }
+
+      h1 {
+        font-size: clamp(2.78rem, 15vw, 4.8rem);
+      }
+
+      .cta-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section-shell {
+        padding: 70px 5%;
+      }
+
+      .drill-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .drill-card {
+        min-height: auto;
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 470px) {
+      main {
+        padding-top: 122px;
+      }
+
+      .top-nav {
+        grid-template-columns: 1fr;
+        justify-items: stretch;
+      }
+
+      .nav-brand {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .nav-title {
+        max-width: none;
+        font-size: 0.88rem;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .language-toggle {
+        flex: 1;
+        max-width: 245px;
+      }
+
+      .language-toggle button {
+        flex: 1;
+        padding: 0 8px;
+      }
+
+      .nav-menu {
+        left: 14px;
+        right: 14px;
+        width: auto;
+      }
+
+      .hero {
+        padding-top: 30px;
+      }
+
+      .hero-logo-wrap {
+        margin: 2px 0 22px;
+      }
+
+      .hero-logo {
+        width: min(210px, 58vw);
+      }
+
+      .hero-copy {
+        line-height: 1.68;
+      }
+
+      .method-card {
+        border-radius: 28px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      main {
+        padding-top: 118px;
+      }
+
+      .nav-title {
+        font-size: 0.78rem;
+      }
+
+      .language-toggle {
+        max-width: 220px;
+      }
+
+      .language-toggle button {
+        font-size: 0.6rem;
+      }
+
+      h1 {
+        font-size: 2.55rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="top-nav" aria-label="Main Navigation">
+      <a href="index.html" class="nav-brand" aria-label="Subliminal Basketball Home">
+        <img src="subliminal-transparent.png" alt="Subliminal Basketball Logo" class="nav-logo" />
+        <div class="nav-title">Subliminal Basketball</div>
+      </a>
+
+      <div class="nav-actions">
+        <div class="language-toggle" aria-label="Language selector">
+          <button id="enBtn" class="active" type="button">English</button>
+          <button id="esBtn" type="button">Español</button>
+        </div>
+
+        <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html">
+          <span data-lang="en">Home</span>
+          <span data-lang="es">Inicio</span>
+        </a>
+
+        <a href="#drills">
+          <span data-lang="en">Subliminal Drills</span>
+          <span data-lang="es">Drills Subliminales</span>
+        </a>
+
+        <a href="#method">
+          <span data-lang="en">The Method</span>
+          <span data-lang="es">El Método</span>
+        </a>
+
+        <a href="#wear">
+          <span data-lang="en">Wear Subliminal</span>
+          <span data-lang="es">Viste Subliminal</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span data-lang="en">Five drills. One automatic response.</span>
+          <span data-lang="es">Cinco drills. Una respuesta automática.</span>
+        </div>
+
+        <div class="hero-logo-wrap" aria-hidden="true">
+          <img src="subliminal-transparent.png" alt="" class="hero-logo" />
+        </div>
+
+        <h1>
+          <span data-lang="en">5 Subliminal</span>
+          <span data-lang="en">Drills</span>
+
+          <span data-lang="es">5 Drills</span>
+          <span data-lang="es">Subliminales</span>
+        </h1>
+
+        <p class="subtitle">
+          <span data-lang="en">Train what happens before the move: the read, the reaction, the control, the decision, and the automatic response.</span>
+          <span data-lang="es">Entrena lo que pasa antes del movimiento: la lectura, la reacción, el control, la decisión y la respuesta automática.</span>
+        </p>
+
+        <p class="hero-copy" data-lang="en">
+          Subliminal Basketball is not just about doing more. It is about responding cleaner, faster, and calmer when pressure rises. These five drills build the mental rhythm behind the physical game.
+        </p>
+
+        <p class="hero-copy" data-lang="es">
+          Subliminal Basketball no se trata solamente de hacer más. Se trata de responder con más claridad, más velocidad y más calma cuando sube la presión. Estos cinco drills construyen el ritmo mental detrás del juego físico.
+        </p>
+
+        <div class="cta-row">
+          <a href="#drills" class="btn btn-primary">
+            <span data-lang="en">See The Drills</span>
+            <span data-lang="es">Ver Los Drills</span>
+          </a>
+
+          <a href="#method" class="btn btn-secondary">
+            <span data-lang="en">Understand The Method</span>
+            <span data-lang="es">Entender El Método</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="drills">
+      <div class="section-heading">
+        <div class="kicker">
+          <span data-lang="en">The Training Layer</span>
+          <span data-lang="es">La Capa De Entrenamiento</span>
+        </div>
+
+        <h2>
+          <span data-lang="en">The Five Subliminal Drills</span>
+          <span data-lang="es">Los Cinco Drills Subliminales</span>
+        </h2>
+
+        <p data-lang="en">
+          Each drill attacks a different part of the game before the visible action happens. The goal is simple: make the correct response feel natural before pressure forces it.
+        </p>
+
+        <p data-lang="es">
+          Cada drill trabaja una parte distinta del juego antes de que ocurra la acción visible. La meta es simple: hacer que la respuesta correcta se sienta natural antes de que la presión la obligue.
+        </p>
+      </div>
+
+      <div class="drill-grid">
+        <article class="drill-card">
+          <div class="drill-number">01</div>
+          <div class="drill-content">
+            <span class="drill-tag">
+              <span data-lang="en">Vision</span>
+              <span data-lang="es">Visión</span>
+            </span>
+            <h3>
+              <span data-lang="en">See First</span>
+              <span data-lang="es">Ver Primero</span>
+            </h3>
+            <p data-lang="en">Trains the player to scan the floor before the ball, defender, or pressure decides the moment for them.</p>
+            <p data-lang="es">Entrena al jugador a leer la cancha antes de que el balón, el defensor o la presión decidan el momento por él.</p>
+          </div>
+          <div class="drill-footer">
+            <span data-lang="en">Read before reaction.</span>
+            <span data-lang="es">Leer antes de reaccionar.</span>
+            <a href="/cogs/cog-01.html" class="drill-link">
+              <span data-lang="en">Open Drill</span>
+              <span data-lang="es">Abrir Drill</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="drill-card">
+          <div class="drill-number">02</div>
+          <div class="drill-content">
+            <span class="drill-tag">
+              <span data-lang="en">Reaction</span>
+              <span data-lang="es">Reacción</span>
+            </span>
+            <h3>
+              <span data-lang="en">No Hesitation</span>
+              <span data-lang="es">Sin Duda</span>
+            </h3>
+            <p data-lang="en">Builds the habit of moving on time, without freezing, overthinking, or wasting the advantage.</p>
+            <p data-lang="es">Construye el hábito de moverse a tiempo, sin congelarse, pensar de más o desperdiciar la ventaja.</p>
+          </div>
+          <div class="drill-footer">
+            <span data-lang="en">The advantage has a clock.</span>
+            <span data-lang="es">La ventaja tiene reloj.</span>
+            <a href="/cogs/cog-02.html" class="drill-link">
+              <span data-lang="en">Open Drill</span>
+              <span data-lang="es">Abrir Drill</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="drill-card">
+          <div class="drill-number">03</div>
+          <div class="drill-content">
+            <span class="drill-tag">
+              <span data-lang="en">Control</span>
+              <span data-lang="es">Control</span>
+            </span>
+            <h3>
+              <span data-lang="en">Calm Under Pressure</span>
+              <span data-lang="es">Calma Bajo Presión</span>
+            </h3>
+            <p data-lang="en">Trains the player to slow the mind while the game speeds up, keeping balance, breath, and decision control.</p>
+            <p data-lang="es">Entrena al jugador a calmar la mente mientras el juego acelera, manteniendo balance, respiración y control de decisión.</p>
+          </div>
+          <div class="drill-footer">
+            <span data-lang="en">Pressure reveals preparation.</span>
+            <span data-lang="es">La presión revela la preparación.</span>
+            <a href="/cogs/cog-03.html" class="drill-link">
+              <span data-lang="en">Open Drill</span>
+              <span data-lang="es">Abrir Drill</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="drill-card">
+          <div class="drill-number">04</div>
+          <div class="drill-content">
+            <span class="drill-tag">
+              <span data-lang="en">Decision</span>
+              <span data-lang="es">Decisión</span>
+            </span>
+            <h3>
+              <span data-lang="en">Split The Moment</span>
+              <span data-lang="es">Divide El Momento</span>
+            </h3>
+            <p data-lang="en">Teaches the player to choose quickly between drive, pass, shoot, relocate, or reset when the defense changes.</p>
+            <p data-lang="es">Enseña al jugador a escoger rápido entre atacar, pasar, tirar, moverse sin balón o reiniciar cuando cambia la defensa.</p>
+          </div>
+          <div class="drill-footer">
+            <span data-lang="en">One read. One decision.</span>
+            <span data-lang="es">Una lectura. Una decisión.</span>
+            <a href="/cogs/cog-04.html" class="drill-link">
+              <span data-lang="en">Open Drill</span>
+              <span data-lang="es">Abrir Drill</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="drill-card">
+          <div class="drill-number">05</div>
+          <div class="drill-content">
+            <span class="drill-tag">
+              <span data-lang="en">Automatic</span>
+              <span data-lang="es">Automático</span>
+            </span>
+            <h3>
+              <span data-lang="en">Automatic Response</span>
+              <span data-lang="es">Respuesta Automática</span>
+            </h3>
+            <p data-lang="en">Connects vision, reaction, control, and decision speed until the right basketball action becomes instinct.</p>
+            <p data-lang="es">Conecta visión, reacción, control y velocidad de decisión hasta que la acción correcta se vuelve instinto.</p>
+          </div>
+          <div class="drill-footer">
+            <span data-lang="en">Train it until it shows up by itself.</span>
+            <span data-lang="es">Entrénalo hasta que aparezca solo.</span>
+            <a href="/cogs/cog-05.html" class="drill-link">
+              <span data-lang="en">Open Drill</span>
+              <span data-lang="es">Abrir Drill</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell" id="method">
+      <div class="method-card">
+        <h2>
+          <span data-lang="en">The Method Is Simple</span>
+          <span data-lang="es">El Método Es Simple</span>
+        </h2>
+
+        <div class="method-copy">
+          <p data-lang="en">
+            Every drill follows the same identity: <strong>see it, process it, respond on time.</strong> The work is not random. Each rep is designed to remove delay from the player’s game.
+          </p>
+
+          <p data-lang="en">
+            Subliminal training is the hidden layer. It builds the response before the crowd sees the move, before the defender reacts, and before the pressure steals the advantage.
+          </p>
+
+          <p data-lang="es">
+            Cada drill sigue la misma identidad: <strong>verlo, procesarlo y responder a tiempo.</strong> El trabajo no es al azar. Cada repetición está diseñada para eliminar la demora del juego del jugador.
+          </p>
+
+          <p data-lang="es">
+            El entrenamiento subliminal es la capa escondida. Construye la respuesta antes de que la gente vea el movimiento, antes de que el defensor reaccione y antes de que la presión robe la ventaja.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="wear">
+      <div class="section-heading">
+        <div class="kicker">
+          <span data-lang="en">Wear The Mindset</span>
+          <span data-lang="es">Viste La Mentalidad</span>
+        </div>
+
+        <h2>
+          <span data-lang="en">Wear Subliminal</span>
+          <span data-lang="es">Viste Subliminal</span>
+        </h2>
+
+        <p data-lang="en">
+          The drills build the response. The apparel carries the identity. Subliminal is how the player thinks before the game sees it.
+        </p>
+
+        <p data-lang="es">
+          Los drills construyen la respuesta. La ropa carga la identidad. Subliminal es cómo piensa el jugador antes de que el juego lo vea.
+        </p>
+
+        <div class="cta-row">
+          <a href="#" class="btn btn-primary">
+            <span data-lang="en">Wear Subliminal</span>
+            <span data-lang="es">Viste Subliminal</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span data-lang="en">© 2026 Subliminal Basketball. Five drills. One automatic response.</span>
+    <span data-lang="es">© 2026 Subliminal Basketball. Cinco drills. Una respuesta automática.</span>
+  </footer>
+
+  <script>
+    const enBtn = document.getElementById("enBtn");
+    const esBtn = document.getElementById("esBtn");
+    const menuBtn = document.getElementById("menuBtn");
+    const navMenu = document.getElementById("navMenu");
+    const menuLinks = navMenu.querySelectorAll("a");
+
+    function setLanguage(lang) {
+      if (lang === "es") {
+        document.body.classList.add("es");
+        esBtn.classList.add("active");
+        enBtn.classList.remove("active");
+        document.documentElement.lang = "es";
+      } else {
+        document.body.classList.remove("es");
+        enBtn.classList.add("active");
+        esBtn.classList.remove("active");
+        document.documentElement.lang = "en";
+      }
+
+      localStorage.setItem("subliminalDrillsLang", lang);
+      closeMenu();
+    }
+
+    function toggleMenu() {
+      const isOpen = navMenu.classList.toggle("open");
+      menuBtn.classList.toggle("open", isOpen);
+      menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    }
+
+    function closeMenu() {
+      navMenu.classList.remove("open");
+      menuBtn.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-label", "Open menu");
+    }
+
+    enBtn.addEventListener("click", () => setLanguage("en"));
+    esBtn.addEventListener("click", () => setLanguage("es"));
+    menuBtn.addEventListener("click", toggleMenu);
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (event) => {
+      const clickedInsideNav = event.target.closest(".top-nav");
+      if (!clickedInsideNav) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    const savedLang = localStorage.getItem("subliminalDrillsLang");
+    if (savedLang === "es") {
+      setLanguage("es");
+    }
+  </script>
+</body>
+</html>
