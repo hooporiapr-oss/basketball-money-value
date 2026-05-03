@@ -56,12 +56,17 @@
 
     .site-header {
       width: 100%;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
       z-index: 50;
-      background: rgba(5, 5, 5, 0.78);
+      background: rgba(5, 5, 5, 0.84);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    main {
+      padding-top: 86px;
     }
 
     .top-nav {
@@ -268,6 +273,22 @@
       text-transform: uppercase;
       font-size: clamp(0.72rem, 1.6vw, 0.83rem);
       margin-bottom: 18px;
+    }
+
+    .hero-logo-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 4px 0 26px;
+    }
+
+    .hero-logo {
+      width: clamp(150px, 18vw, 245px);
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 28px rgba(245, 182, 66, 0.42));
     }
 
     h1 {
@@ -534,6 +555,10 @@
     }
 
     @media (max-width: 700px) {
+      main {
+        padding-top: 76px;
+      }
+
       .top-nav {
         padding: 12px 5%;
         grid-template-columns: 1fr auto;
@@ -580,8 +605,12 @@
       }
 
       .hero {
-        padding: 40px 5% 70px;
+        padding: 36px 5% 70px;
         gap: 34px;
+      }
+
+      .hero-logo {
+        width: clamp(145px, 38vw, 205px);
       }
 
       .eyebrow {
@@ -620,6 +649,10 @@
     }
 
     @media (max-width: 470px) {
+      main {
+        padding-top: 122px;
+      }
+
       .top-nav {
         grid-template-columns: 1fr;
         justify-items: stretch;
@@ -657,7 +690,15 @@
       }
 
       .hero {
-        padding-top: 34px;
+        padding-top: 30px;
+      }
+
+      .hero-logo-wrap {
+        margin: 2px 0 22px;
+      }
+
+      .hero-logo {
+        width: min(210px, 58vw);
       }
 
       .subtitle {
@@ -680,6 +721,10 @@
     }
 
     @media (max-width: 360px) {
+      main {
+        padding-top: 118px;
+      }
+
       .nav-title {
         font-size: 0.78rem;
       }
@@ -754,6 +799,10 @@
         <div class="eyebrow">
           <span data-lang="en">Train the response before the moment arrives.</span>
           <span data-lang="es">Entrena la respuesta antes de que llegue el momento.</span>
+        </div>
+
+        <div class="hero-logo-wrap" aria-hidden="true">
+          <img src="subliminal-transparent.png" alt="" class="hero-logo" />
         </div>
 
         <h1>
