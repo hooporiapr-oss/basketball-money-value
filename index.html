@@ -3,347 +3,659 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subliminal Basketball</title>
 
-  <title>Basketball Money — Game Intelligence System</title>
+  <style>
+    :root {
+      --black: #050505;
+      --dark: #0b0b0b;
+      --gold: #f5b642;
+      --orange: #ff7a18;
+      --teal: #11d9c5;
+      --white: #ffffff;
+      --muted: #b8b8b8;
+      --card: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.14);
+    }
 
-  <meta
-    name="description"
-    content="Basketball Money turns Game Intelligence into player value. Cognitive Coaching prepares the player. FlashCourt Lights prove the skill."
-  />
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  <meta property="og:title" content="Basketball Money — Game Intelligence System" />
-  <meta
-    property="og:description"
-    content="Cognitive Coaching builds Game Intelligence and gives players a Cognitive Edge. Basketball Money = Value."
-  />
-  <meta property="og:image" content="hoops-money.png" />
-  <meta property="og:type" content="website" />
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(245, 182, 66, 0.22), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(17, 217, 197, 0.14), transparent 35%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #050505 100%);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-  <link rel="icon" href="hoops-money.png" />
-  <link rel="stylesheet" href="css/hoops-money.css" />
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      width: 100%;
+      padding: 22px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #050505;
+      font-weight: 900;
+      box-shadow: 0 0 28px rgba(245, 182, 66, 0.35);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .language-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .language-toggle button {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 8px 13px;
+      cursor: pointer;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .language-toggle button.active {
+      background: var(--gold);
+      color: #050505;
+    }
+
+    .hero {
+      min-height: calc(100vh - 90px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+      padding: 40px 6% 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 7.8rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    h1 span {
+      display: block;
+      background: linear-gradient(135deg, var(--white), var(--gold), var(--orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      line-height: 1.45;
+      color: var(--white);
+      max-width: 700px;
+      margin-bottom: 32px;
+      font-weight: 700;
+    }
+
+    .story {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.75;
+      max-width: 720px;
+    }
+
+    .story strong {
+      color: var(--white);
+    }
+
+    .story .power-line {
+      color: var(--white);
+      font-weight: 900;
+      font-size: 1.2rem;
+      line-height: 1.45;
+      margin-top: 6px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #050505;
+      box-shadow: 0 18px 45px rgba(245, 182, 66, 0.22);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .visual-panel {
+      position: relative;
+      z-index: 2;
+      min-height: 560px;
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(245, 182, 66, 0.25), transparent 34%),
+        radial-gradient(circle at 50% 80%, rgba(17, 217, 197, 0.16), transparent 35%),
+        rgba(255, 255, 255, 0.045);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 38px;
+    }
+
+    .court-card {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 3 / 4;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        radial-gradient(circle at center, rgba(255,122,24,0.24), transparent 45%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .court-card::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+    }
+
+    .court-card::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .badge {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(17,217,197,0.12);
+      border: 1px solid rgba(17,217,197,0.35);
+      color: var(--teal);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+
+    .visual-title {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(2.3rem, 4vw, 4rem);
+      line-height: 0.92;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+    }
+
+    .visual-title span {
+      color: var(--gold);
+    }
+
+    .visual-footer {
+      position: relative;
+      z-index: 2;
+      color: var(--muted);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 90px 6%;
+    }
+
+    .section-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: clamp(28px, 5vw, 60px);
+      background: var(--card);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.28);
+    }
+
+    .section-card h2 {
+      font-size: clamp(2rem, 5vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+
+    .section-card p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .section-card .closing {
+      color: var(--white);
+      font-weight: 900;
+      font-size: 1.3rem;
+      margin-top: 24px;
+    }
+
+    footer {
+      padding: 36px 6%;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    [data-lang="es"] {
+      display: none;
+    }
+
+    body.es [data-lang="en"] {
+      display: none;
+    }
+
+    body.es [data-lang="es"] {
+      display: block;
+    }
+
+    body.es span[data-lang="es"],
+    body.es strong[data-lang="es"] {
+      display: inline;
+    }
+
+    body.es span[data-lang="en"],
+    body.es strong[data-lang="en"] {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      header {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 25px;
+      }
+
+      .visual-panel {
+        min-height: 440px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav a {
+        display: none;
+      }
+
+      .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .story {
+        font-size: 1rem;
+      }
+
+      .cta-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
-<body data-lang="en">
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="brand-mark" href="#top" aria-label="Basketball Money Home Court">
-        <img class="nav-logo" src="bm-logo.png" alt="Basketball Money logo" />
+<body>
+  <header>
+    <a href="index.html" class="brand">
+      <div class="brand-mark">SB</div>
+      <div>Subliminal Basketball</div>
+    </a>
 
-        <span class="brand-copy">
-          <small>Basketball Money</small>
-          <strong>Home Court</strong>
-        </span>
-      </a>
+    <nav>
+      <a href="#identity">Identity</a>
+      <a href="#pressure">Pressure</a>
+      <a href="#wear">Wear The Game</a>
 
-      <div class="nav-links">
-        <a href="#system"><span class="en">System</span><span class="es">Sistema</span></a>
-        <a href="#coach"><span class="en">Cognitive Coaching</span><span class="es">Coaching Cognitivo</span></a>
-        <a href="#drills"><span class="en">FlashCourt Lights</span><span class="es">FlashCourt Lights Gratis</span></a>
-        <a href="https://shop.hoops.money"><span class="en">Wear The Value</span><span class="es">Ponte El Valor</span></a>
-        <a href="/blog/01cog-coaching.html"><span class="en">Blogs</span><span class="es">Blogs</span></a>
-        <a href="#start"><span class="en">Start</span><span class="es">Empezar</span></a>
-    </div>
-
-      <div class="nav-actions">
-        <div class="lang-inline" aria-label="Language toggle">
-          <button class="active" data-set-lang="en">English</button>
-          <button data-set-lang="es">Español PR</button>
-        </div>
-
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobileMenu"
-        >
-          <span></span>
-        </button>
+      <div class="language-toggle">
+        <button id="enBtn" class="active" type="button">EN</button>
+        <button id="esBtn" type="button">ES</button>
       </div>
-    </div>
+    </nav>
+  </header>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="mobile-menu-inner">
-        <a href="#system" class="mobile-link"><span class="en">System</span><span class="es">Sistema</span></a>
-        <a href="#coach" class="mobile-link"><span class="en">Cognitive Coaching</span><span class="es">Coaching Cognitivo</span></a>
-        <a href="#drills" class="mobile-link"><span class="en">FlashCourt Lights</span><span class="es">FlashCourt Lights Gratis</span></a>
-        <a href="https://shop.hoops.money" class="mobile-link"><span class="en">Wear The Value</span><span class="es">Ponte El Valor</span></a>
-        <a href="/blog/01cog-coaching.html" class="mobile-link"><span class="en">Blogs</span><span class="es">Blogs</span></a>
-        <a href="#start" class="mobile-link"><span class="en">Start</span><span class="es">Empezar</span></a>
-
-        <div class="lang-menu">
-          <button class="active" data-set-lang="en">English</button>
-          <button data-set-lang="es">Español PR</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <main id="top">
+  <main>
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <div class="hero-logo-wrap">
-            <img class="hero-logo" src="hoops-money.png" alt="Basketball Money logo" />
-          </div>
-
-          <div class="eyebrow">
-            <span class="dot"></span>
-            <span class="en">Basketball Money = Value</span>
-            <span class="es">Basketball Money = Valor</span>
-          </div>
-
-          <h1>
-            <span class="en">Turn Game Intelligence Into <span class="grad">Player Value</span></span>
-            <span class="es">Convierte Inteligencia De Juego En <span class="grad">Valor De Jugador</span></span>
-          </h1>
-
-          <p class="en">
-            Cognitive Coaching builds your Game Intelligence and gives you a Cognitive Edge.
-            The coach prepares you. The lights prove it.
-          </p>
-
-          <p class="es">
-            Cognitive Coaching desarrolla tu inteligencia de juego y te da una ventaja cognitiva.
-            El coach te prepara. Las luces lo prueban.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#drills">
-              <span class="en">Run The Lights</span>
-              <span class="es">Corre Las Luces</span>
-           </a>
-
-           <a class="btn btn-secondary" href="#coach">
-             <span class="en">Start Cognitive Coaching</span>
-             <span class="es">Empezar Coaching Cognitivo</span>
-           </a>
-
-           <a class="btn btn-secondary" href="https://shop.hoops.money">
-             <span class="en">Wear The BM Value</span>
-             <span class="es">Ponte El Valor BM</span>
-           </a>
-        </div>
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span data-lang="en">Train the response before the moment arrives.</span>
+          <span data-lang="es">Entrena la respuesta antes de que llegue el momento.</span>
         </div>
 
-        <aside class="proof-panel" aria-label="Basketball Money game intelligence system">
-          <div class="panel-head">
-            <h2>
-              <span class="en">Game Intelligence System</span>
-              <span class="es">Sistema De Inteligencia De Juego</span>
-            </h2>
+        <h1>
+          <span data-lang="en">Subliminal</span>
+          <span data-lang="en">Basketball</span>
 
-            <span class="badge">
-              <span class="en">Free Access</span>
-              <span class="es">Acceso Gratis</span>
-            </span>
-          </div>
+          <span data-lang="es">Baloncesto</span>
+          <span data-lang="es">Subliminal</span>
+        </h1>
 
-          <div class="value-stack">
-            <div class="value-row">
-              <div class="value-num">01</div>
-              <div>
-                <strong>Pattern Recognition</strong>
-                <span class="en">See the cue before the play starts.</span>
-                <span class="es">Ve la señal antes de que empiece la jugada.</span>
-              </div>
-            </div>
+        <p class="subtitle">
+          <span data-lang="en">The game isn’t just played. It’s processed.</span>
+          <span data-lang="es">El juego no solo se juega. Se procesa.</span>
+        </p>
 
-            <div class="value-row">
-              <div class="value-num">02</div>
-              <div>
-                <strong>Reaction Control</strong>
-                <span class="en">React fast without losing control.</span>
-                <span class="es">Reacciona rápido sin perder control.</span>
-              </div>
-            </div>
+        <div class="story">
+          <p data-lang="en">
+            Every moment moves fast. Too fast for hesitation. Too fast for overthinking. The difference isn’t just skill—it’s how quickly you see, react, and decide.
+          </p>
 
-            <div class="value-row">
-              <div class="value-num">03</div>
-              <div>
-                <strong>Sequence Recall</strong>
-                <span class="en">Stay organized through multiple actions.</span>
-                <span class="es">Mantente organizado en acciones múltiples.</span>
-              </div>
-            </div>
+          <p data-lang="en">
+            Most players train what they can do. Few train how they think. That’s the separation.
+          </p>
 
-            <div class="value-row">
-              <div class="value-num">04</div>
-              <div>
-                <strong>Multi-Target Vision</strong>
-                <span class="en">See the whole floor at once.</span>
-                <span class="es">Lee toda la cancha al mismo tiempo.</span>
-              </div>
-            </div>
+          <p data-lang="en">
+            Subliminal Basketball is built on one principle: <strong>Train the game until your response becomes automatic.</strong>
+          </p>
 
-            <div class="value-row">
-              <div class="value-num">05</div>
-              <div>
-                <strong>Decision Speed</strong>
-                <span class="en">Decide before the advantage disappears.</span>
-                <span class="es">Decide antes de que la ventaja desaparezca.</span>
-              </div>
-            </div>
-          </div>
-        </aside>
+          <p data-lang="es">
+            Cada momento se mueve rápido. Demasiado rápido para dudar. Demasiado rápido para pensar de más. La diferencia no es solamente la habilidad; es cuán rápido ves, reaccionas y decides.
+          </p>
+
+          <p data-lang="es">
+            La mayoría de los jugadores entrenan lo que pueden hacer. Pocos entrenan cómo piensan. Ahí está la separación.
+          </p>
+
+          <p data-lang="es">
+            Subliminal Basketball nace de un principio: <strong>Entrena el juego hasta que tu respuesta sea automática.</strong>
+          </p>
+
+          <p class="power-line" data-lang="en">
+            Clarity under pressure. Control in motion. Decisions made on time.
+          </p>
+
+          <p class="power-line" data-lang="es">
+            Claridad bajo presión. Control en movimiento. Decisiones a tiempo.
+          </p>
+        </div>
+
+        <div class="cta-row">
+          <a href="#identity" class="btn btn-primary">
+            <span data-lang="en">Step Into It</span>
+            <span data-lang="es">Entra En El Juego</span>
+          </a>
+
+          <a href="#wear" class="btn btn-secondary">
+            <span data-lang="en">Wear The Game</span>
+            <span data-lang="es">Viste El Juego</span>
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section class="section" id="system">
-      <div class="wrap">
-        <div class="section-head">
-          <h2><span class="en">The System</span><span class="es">El Sistema</span></h2>
-
-          <p class="en">
-            Basketball Money is a Game Intelligence system.
-            Cognitive Coaching prepares the player. The FlashCourt Lights prove the player.
-          </p>
-
-          <p class="es">
-            Basketball Money es un sistema de inteligencia de juego.
-            Cognitive Coaching prepara al jugador. Los FlashCourt Lights prueban al jugador.
-          </p>
-        </div>
-
-        <div class="thesis">
-          <div class="thesis-card">
-            <strong><span class="en">Cognitive Coaching</span><span class="es">Coaching Cognitivo</span></strong>
-            <h3><span class="en">The Director of Cognitive Value.</span><span class="es">El Director del Valor Cognitivo.</span></h3>
-            <p class="en">
-              Cognitive Coaching builds Pattern Recognition, Reaction Control, Sequence Recall,
-              Multi-Target Vision, and Decision Speed into one connected system.
-            </p>
-            <p class="es">
-              Cognitive Coaching desarrolla Reconocimiento de Patrones, Control de Reacción,
-              Memoria de Secuencia, Visión Multi-Objetivo y Velocidad de Decisión en un sistema conectado.
-            </p>
+      <div class="visual-panel">
+        <div class="court-card">
+          <div class="badge">
+            <span data-lang="en">Automatic Response</span>
+            <span data-lang="es">Respuesta Automática</span>
           </div>
 
-          <div class="thesis-card">
-            <strong><span class="en">FlashCourt Lights</span><span class="es">FlashCourt Lights</span></strong>
-            <h3><span class="en">The drills prove it.</span><span class="es">Los drills lo prueban.</span></h3>
-            <p class="en">
-              Real-time training that tests your Game Intelligence under pressure.
-              No guessing. No theory. Just decisions.
-            </p>
-            <p class="es">
-              Entrenamiento en tiempo real que prueba tu inteligencia de juego bajo presión.
-              Sin adivinar. Sin teoría. Solo decisiones.
-            </p>
+          <div class="visual-title">
+            <span data-lang="en">No<br>Hesitation</span>
+            <span data-lang="es">Sin<br>Duda</span>
+          </div>
+
+          <div class="visual-footer">
+            <span data-lang="en">See it. Read it. React before the advantage disappears.</span>
+            <span data-lang="es">Velo. Léelo. Reacciona antes de que la ventaja desaparezca.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="coach">
-      <div class="wrap">
-        <div class="section-head">
-          <h2><span class="en">Cognitive Coaching</span><span class="es">Coaching Cognitivo</span></h2>
+    <section id="identity">
+      <div class="section-card">
+        <h2>
+          <span data-lang="en">This Is Identity</span>
+          <span data-lang="es">Esto Es Identidad</span>
+        </h2>
 
-          <p class="en">
-            One system. Five skills. One Cognitive Edge.
-          </p>
+        <p data-lang="en">
+          This is not about trends. This is not about noise. This is identity. And how you show up matters.
+        </p>
 
-          <p class="es">
-            Un sistema. Cinco habilidades. Una ventaja cognitiva.
-          </p>
-        </div>
+        <p data-lang="en">
+          We don’t just play the game. We dress the game. What you wear reflects how you think: controlled, clear, and unshaken under pressure.
+        </p>
 
-        <div class="thesis">
-          <div class="thesis-card">
-            <strong><span class="en">Basketball Money Cognitive Coaching</span><span class="es">Coaching Cognitivo Basketball Money</span></strong>
-            <h3><span class="en">Director / GM Of Cognitive Value</span><span class="es">Director / GM Del Valor Cognitivo</span></h3>
+        <p data-lang="es">
+          Esto no se trata de tendencias. Esto no se trata de ruido. Esto es identidad. Y la manera en que te presentas importa.
+        </p>
 
-            <p class="en">
-              Cognitive Coaching trains how players think, read, and decide in real time.
-              The goal is not one skill. The goal is connection:
-              see early, react fast, stay organized, track everything, and decide in rhythm.
-              That is Game Intelligence.
-            </p>
-
-            <p class="es">
-              Cognitive Coaching entrena cómo el jugador piensa, lee y decide en tiempo real.
-              La meta no es una habilidad. La meta es la conexión:
-              ver temprano, reaccionar rápido, mantenerse organizado, leer todo y decidir en ritmo.
-              Eso es inteligencia de juego.
-            </p>
-
-            <div class="mini-list" style="margin-top:18px; margin-bottom:18px;">
-              <span>COG 01 — Pattern Recognition</span>
-              <span>COG 02 — Reaction Control</span>
-              <span>COG 03 — Sequence Recall</span>
-              <span>COG 04 — Multi-Target Vision</span>
-              <span>COG 05 — Decision Speed</span>
-            </div>
-
-            <div class="card-actions">
-              <a class="btn btn-primary" href="https://chatgpt.com/g/g-69f343ec87788191b464f841e8cbe838-basketball-money-cognitive-coaching" target="_blank" rel="noopener noreferrer">
-                <span class="en">Start Cognitive Coaching</span>
-                <span class="es">Empezar Coaching Cognitivo</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="coach-grid" id="coachGrid" style="display:none;"></div>
+        <p data-lang="es">
+          Nosotros no solo jugamos el juego. Nosotros vestimos el juego. Lo que te pones refleja cómo piensas: con control, claridad y firmeza bajo presión.
+        </p>
       </div>
     </section>
 
-    <section class="section" id="drills">
-      <div class="wrap">
-        <div class="section-head">
-          <h2><span class="en">FlashCourt Lights</span><span class="es">FlashCourt Lights Gratis</span></h2>
+    <section id="pressure">
+      <div class="section-card">
+        <h2>
+          <span data-lang="en">Pressure Reveals Everything</span>
+          <span data-lang="es">La Presión Lo Revela Todo</span>
+        </h2>
 
-          <p class="en">
-            Train your Game Intelligence.
-            Each drill challenges a different layer of your Cognitive Edge.
-          </p>
+        <p data-lang="en">
+          No distractions. No hesitation. No wasted motion. From the drills to the design, everything points to one outcome: clarity under pressure, control in motion, and decisions made on time.
+        </p>
 
-          <p class="es">
-            Entrena tu inteligencia de juego.
-            Cada drill desafía una parte de tu ventaja cognitiva.
-          </p>
-        </div>
+        <p data-lang="en">
+          Because the advantage has a clock. And if you hesitate—you lose it.
+        </p>
 
-        <div class="drill-grid" id="drillGrid"></div>
+        <p data-lang="es">
+          Sin distracciones. Sin dudas. Sin movimientos desperdiciados. Desde los ejercicios hasta el diseño, todo apunta a un solo resultado: claridad bajo presión, control en movimiento y decisiones tomadas a tiempo.
+        </p>
+
+        <p data-lang="es">
+          Porque la ventaja tiene reloj. Y si dudas, la pierdes.
+        </p>
       </div>
     </section>
 
-    <section class="section" id="start">
-      <div class="wrap">
-        <div class="final-cta">
-          <h2><span class="en">Basketball Money Is Value</span><span class="es">Basketball Money Es Valor</span></h2>
+    <section id="wear">
+      <div class="section-card">
+        <h2>
+          <span data-lang="en">Wear The Response</span>
+          <span data-lang="es">Viste La Respuesta</span>
+        </h2>
 
-          <p class="en">
-            Start Cognitive Coaching. Play the FlashCourt Lights. Build your Game Intelligence. Wear the value.
-          </p>
+        <p data-lang="en">
+          This isn’t something you explain. This is something you step into.
+        </p>
 
-          <p class="es">
-            Empieza Cognitive Coaching. Juega los FlashCourt Lights. Desarrolla tu inteligencia de juego. Ponte el valor.
-          </p>
+        <p data-lang="en" class="closing">
+          Subliminal Basketball is the look, the mindset, and the automatic response of the player who is ready before the moment arrives.
+        </p>
 
-          <div class="hero-logo-wrap" style="justify-content:center; margin: 22px auto 18px;">
-            <img class="hero-logo" src="bm-logo.png" alt="Basketball Money logo" />
-        </div>
+        <p data-lang="es">
+          Esto no es algo que se explica. Esto es algo en lo que tú entras.
+        </p>
 
-       <div class="hero-actions" style="justify-content:center;">
-         <a class="btn btn-primary" href="https://shop.hoops.money">
-           <span class="en">Wear The Value</span>
-           <span class="es">Ponte El Valor</span>
-        </a>
-      </div>
+        <p data-lang="es" class="closing">
+          Subliminal Basketball es la presencia, la mentalidad y la respuesta automática del jugador que está listo antes de que llegue el momento.
+        </p>
+
+        <div class="cta-row">
+          <a href="#" class="btn btn-primary">
+            <span data-lang="en">Coming Soon</span>
+            <span data-lang="es">Próximamente</span>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">
-      <p class="en">Basketball Money — The Business of Basketball. Train free. Wear the value.</p>
-      <p class="es">Basketball Money — El Negocio del Baloncesto. Entrena gratis. Ponte el valor.</p>
-    </div>
+    <span data-lang="en">© 2026 Subliminal Basketball. Train the game until the response becomes automatic.</span>
+    <span data-lang="es">© 2026 Subliminal Basketball. Entrena el juego hasta que la respuesta sea automática.</span>
   </footer>
 
-  <script src="js/hoops-money.js"></script>
+  <script>
+    const enBtn = document.getElementById("enBtn");
+    const esBtn = document.getElementById("esBtn");
+
+    function setLanguage(lang) {
+      if (lang === "es") {
+        document.body.classList.add("es");
+        esBtn.classList.add("active");
+        enBtn.classList.remove("active");
+        document.documentElement.lang = "es";
+      } else {
+        document.body.classList.remove("es");
+        enBtn.classList.add("active");
+        esBtn.classList.remove("active");
+        document.documentElement.lang = "en";
+      }
+
+      localStorage.setItem("subliminalBasketballLang", lang);
+    }
+
+    enBtn.addEventListener("click", () => setLanguage("en"));
+    esBtn.addEventListener("click", () => setLanguage("es"));
+
+    const savedLang = localStorage.getItem("subliminalBasketballLang");
+    if (savedLang === "es") {
+      setLanguage("es");
+    }
+  </script>
 </body>
 </html>
